@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almayasa Alkaabi | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08040A;--d1:#110A12;--d2:#180C16;--card:#1B0A14;
+  --burg:#7B1D2E;--gold:#C9A96E;--gl:#E4C882;--gll:#F5E4A8;
+  --beige:#F0E8DC;--tm:rgba(240,232,220,.70);--ts:rgba(240,232,220,.36);
+  --bd:rgba(201,169,110,.15);--bdh:rgba(201,169,110,.32);--radius:12px;
+  --body:.95rem;--small:.83rem;--xs:.76rem;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--beige);overflow-x:hidden;line-height:1.65;text-align:right;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(8,4,10,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,169,110,.08);transition:background .4s,border-color .4s;}
+nav.scrolled{background:rgba(8,4,10,.97);border-bottom-color:rgba(201,169,110,.18);}
+
+/* LOGO */
+.logo{font-family:'Cinzel',serif;font-size:.88rem;font-weight:700;color:var(--gold);letter-spacing:4px;display:flex;align-items:center;gap:.6rem;white-space:nowrap;flex-shrink:0;text-transform:uppercase;min-width:0;}
+.logo-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px rgba(201,169,110,.9),0 0 4px rgba(201,169,110,1);flex-shrink:0;display:inline-block;}
+
+/* NAV LINKS */
+.nav-links{display:flex;align-items:center;gap:.3rem;position:absolute;left:50%;transform:translateX(-50%);}
+.nav-link{font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,232,220,.5);text-decoration:none;padding:.55rem 1.1rem;transition:color .22s;position:relative;cursor:pointer;white-space:nowrap;line-height:1;}
+.nav-link::after{content:'';position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transition:width .3s ease;}
+.nav-link:hover{color:rgba(240,232,220,.92);}
+.nav-link:hover::after{width:70%;}
+.nav-link.active{color:var(--gold);}
+.nav-link.active::after{width:70%;}
+
+/* LANG BTN + RIGHT */
+.nav-right{display:flex;align-items:center;gap:.8rem;flex-shrink:0;}
+.lang-btn{background:transparent;border:1px solid rgba(201,169,110,.25);color:rgba(201,169,110,.65);padding:.32rem 1rem;border-radius:50px;font-family:'Cinzel',serif;font-size:.52rem;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .25s;white-space:nowrap;}
+.lang-btn:hover{border-color:rgba(201,169,110,.7);color:var(--gold);}
+
+/* HAMBURGER */
+.nav-mobile-btn{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:8px;background:none;border:none;width:36px;height:36px;}
+.nav-mobile-btn span{display:block;height:1.5px;background:var(--gold);transition:all .35s;transform-origin:center;border-radius:2px;}
+.nav-mobile-btn span:nth-child(1){width:22px;}
+.nav-mobile-btn span:nth-child(2){width:16px;}
+.nav-mobile-btn span:nth-child(3){width:20px;}
+.nav-mobile-btn.open span:nth-child(1){width:20px;transform:translateY(6px) rotate(45deg);}
+.nav-mobile-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.nav-mobile-btn.open span:nth-child(3){width:20px;transform:translateY(-6px) rotate(-45deg);}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;inset:0;background:rgba(8,4,10,.98);z-index:800;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;opacity:0;pointer-events:none;transition:opacity .35s;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mob-link{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:4px;color:rgba(240,232,220,.35);text-decoration:none;transition:all .35s;cursor:pointer;padding:1.1rem 2.5rem;text-transform:uppercase;text-align:center;min-height:56px;display:flex;align-items:center;justify-content:center;}
+.mob-link:hover,.mob-link.active{color:var(--gold);letter-spacing:6px;}
+.mob-divider{width:30px;height:1px;background:rgba(201,169,110,.12);margin:.1rem auto;}
+.mob-lang{font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:4px;color:rgba(201,169,110,.6);border:1px solid rgba(201,169,110,.25);padding:.5rem 1.6rem;border-radius:50px;cursor:pointer;background:transparent;margin-top:1.8rem;transition:all .3s;}
+.mob-lang:hover{color:var(--gold);border-color:rgba(201,169,110,.6);}
+
+/* RESPONSIVE */
+@media(max-width:780px){
+  .nav-links{display:none;}
+  .nav-mobile-btn{display:flex;}
+  .lang-btn{display:none;}
+}.mob-lang:hover{color:var(--gold);border-color:rgba(201,169,110,.5);}
+
+/* RESPONSIVE */
+@media(max-width:780px){
+  .nav-links{display:none;}
+  .nav-mobile-btn{display:flex;}
+  .lang-btn{display:none;}
+}
+
+/* ── PAGE SYSTEM ── */
+.page{display:none;min-height:100vh;padding-top:66px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;}
+.page.active{display:block;opacity:1;transform:none;}
+.page.fade-in{animation:fadeIn .5s ease forwards;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ── SHARED ── */
+.inner{max-width:940px;margin:0 auto;}
+.section{padding:72px 6%;}
+.section-alt{background:var(--d1);}
+.section-dark2{background:var(--d2);}
+.sh{margin-bottom:2.2rem;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.sh-label{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;justify-content:center;gap:.8rem;padding:.48rem 1.5rem;background:rgba(201,169,110,.06);border:1px solid rgba(201,169,110,.28);border-radius:50px;width:fit-content;position:relative;}
+.sh-label::before{content:'';position:absolute;right:calc(100% + 8px);top:50%;height:1px;width:50px;background:linear-gradient(to left,rgba(201,169,110,.38),transparent);transform:translateY(-50%);}
+.sh-label::after{content:'';position:absolute;left:calc(100% + 8px);top:50%;height:1px;width:50px;background:linear-gradient(to right,rgba(201,169,110,.38),transparent);transform:translateY(-50%);}
+.sh-label .ar-label{font-family:'Amiri',serif;font-size:.85rem;letter-spacing:0;text-transform:none;color:var(--gl);}
+.grad-text{background:linear-gradient(135deg,var(--gll) 0%,#ffffff 45%,var(--gl) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--beige);filter:brightness(1.3);paint-order:stroke fill;}
+
+/* ── MARQUEE ── */
+.mq-wrap{background:var(--d1);padding:.6rem 0;overflow:hidden;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.mq-track{display:flex;gap:2.5rem;animation:mq 28s linear infinite;white-space:nowrap;}
+.mq-item{font-family:'Cinzel',serif;font-size:.62rem;color:rgba(201,169,110,.42);letter-spacing:4px;text-transform:uppercase;display:flex;align-items:center;gap:2rem;}
+.mq-item::after{content:'✦';color:rgba(201,169,110,.2);font-size:.4rem;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── HERO ── */
+.hero{min-height:calc(100vh - 62px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 6% 70px;position:relative;overflow:hidden;text-align:center;}
+.hero::before{content:'';position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(123,29,46,.16),transparent 65%);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none;}
+.hero-star{position:absolute;border-radius:50%;background:var(--gold);animation:twinkle 3.5s ease-in-out infinite;pointer-events:none;}
+@keyframes twinkle{0%,100%{opacity:.04}50%{opacity:.2}}
+.photo-ring{display:none;}
+.hero-photo-wrap{display:none;}
+#hpInput{display:none;}
+.note-banner{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.15);border-radius:12px;padding:.65rem 1.4rem;margin-bottom:1.5rem;max-width:500px;}
+.note-banner p{font-size:.78rem;color:var(--ts);line-height:1.6;}
+.note-banner p em{color:var(--gold);font-style:normal;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);color:var(--gold);padding:.28rem 1.1rem;border-radius:50px;font-size:.68rem;letter-spacing:1.5px;margin-bottom:1.2rem;}
+.hero-tags{display:flex;align-items:center;gap:.4rem;justify-content:center;margin-bottom:1rem;flex-wrap:wrap;}
+.htag{font-family:'Tajawal',sans-serif;font-size:.76rem;color:var(--tm);}
+.htag-sep{color:var(--gold);opacity:.4;}
+.hname-ar{font-family:'Amiri',serif;font-size:clamp(2.2rem,8vw,4.2rem);font-weight:700;line-height:1.6;margin-bottom:.3rem;white-space:nowrap;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;padding-bottom:.25em;display:block;overflow:visible;}
+.name-divider{display:flex;align-items:center;gap:.6rem;width:180px;margin:.3rem 0 .5rem;}
+.name-divider span:first-child{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,.45));}
+.name-divider span:last-child{flex:1;height:1px;background:linear-gradient(to left,transparent,rgba(201,169,110,.45));}
+.nd-gem{font-size:.75rem;color:var(--gold);opacity:.9;}
+.hname-en{font-family:'Cinzel',serif;font-size:clamp(.62rem,1.1vw,.78rem);color:rgba(240,232,220,.28);letter-spacing:7px;margin-bottom:1.2rem;text-transform:uppercase;margin-top:.2rem;}
+.hspec{font-family:'Cinzel',serif;font-size:.64rem;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:.25rem;}
+.hschool{font-size:.84rem;color:var(--tm);margin-bottom:1.6rem;}
+.hero-tagline{font-size:.85rem;color:var(--ts);max-width:500px;text-align:center;line-height:1.9;margin-bottom:1.8rem;}
+.hero-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;}
+.hero-btns a{font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:1px;padding:.65rem 1.8rem;border-radius:50px;cursor:pointer;text-decoration:none;transition:all .3s;}
+.hero-btns .btn-primary{background:linear-gradient(135deg,#9A7040,var(--gold));color:var(--bg);}
+.hero-btns .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,169,110,.25);}
+.hero-btns .btn-secondary{background:transparent;border:1px solid rgba(201,169,110,.3);color:var(--gold);}
+.hero-btns .btn-secondary:hover{border-color:var(--gold);background:rgba(201,169,110,.07);transform:translateY(-2px);}
+
+/* ── IMPACT NUMBERS ── */
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem;}
+.impact-item{text-align:center;padding:1.5rem 1rem;background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);transition:all .35s;cursor:default;}
+.impact-item:hover{border-color:rgba(201,169,110,.38);transform:translateY(-4px);box-shadow:0 12px 28px rgba(201,169,110,.09);}
+.impact-num{font-family:'Cinzel',serif;font-size:2.6rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--gold),var(--gll));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem;}
+.impact-lbl{font-size:.58rem;color:var(--tm);line-height:1.55;}
+.impact-lbl span{display:block;font-family:'Cinzel',serif;font-size:.46rem;color:rgba(240,232,220,.2);letter-spacing:1.5px;margin-top:.2rem;}
+@media(max-width:600px){.impact-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ── NAV CARDS ── */
+.nav-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:640px;width:100%;}
+.nav-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:1.5rem 1.6rem;cursor:pointer;transition:all .35s;text-decoration:none;color:var(--beige);display:flex;align-items:center;gap:1.1rem;position:relative;overflow:hidden;}
+.nav-card::after{content:'←';position:absolute;left:1.4rem;top:50%;transform:translateY(-50%);color:rgba(201,169,110,.18);font-size:.9rem;transition:all .35s;}
+.nav-card:hover{border-color:rgba(201,169,110,.45);transform:translateY(-5px);box-shadow:0 14px 36px rgba(201,169,110,.1);background:rgba(201,169,110,.03);}
+.nav-card:hover::after{color:var(--gold);left:1.2rem;}
+.nc-ico{width:44px;height:44px;border-radius:11px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .35s;}
+.nav-card:hover .nc-ico{background:rgba(201,169,110,.15);border-color:rgba(201,169,110,.38);}
+.nc-t{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
+.nc-d{font-size:.72rem;color:var(--ts);line-height:1.5;}
+
+/* ── ABOUT PAGE ── */
+.about-bio p{font-size:var(--body);color:var(--tm);line-height:2;margin-bottom:1.1rem;font-weight:300;text-align:right;}
+.about-bio strong{color:var(--beige);font-weight:600;}
+.sk-lbl{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.sk-row{display:flex;align-items:center;gap:.85rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.sk-ico{font-size:.78rem;width:20px;text-align:center;flex-shrink:0;opacity:.8;}
+.sk-name{font-size:var(--small);color:var(--tm);flex:1;}
+.sk-bar{width:120px;height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;flex-shrink:0;}
+.sk-fill{height:100%;background:linear-gradient(to left,var(--gold),var(--burg));border-radius:2px;}
+.iblock{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.1rem;margin-bottom:.8rem;}
+.ib-t{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;}
+.ib-t::before{content:'';width:10px;height:1px;background:var(--gold);}
+.ib-row{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.ib-row:last-child{border:none;}
+.ib-k{font-size:var(--xs);color:var(--ts);}
+.ib-v{font-size:var(--small);color:var(--beige);font-weight:500;text-align:left;}
+.hob-wrap{display:flex;flex-wrap:wrap;gap:.35rem;}
+.hob{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.16);color:var(--gl);padding:.22rem .7rem;border-radius:50px;font-size:.72rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+@media(max-width:720px){.about-grid{grid-template-columns:1fr;}}
+
+/* VM cards */
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.vm-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden;}
+.vm-card::before{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(to bottom,transparent 5%,rgba(201,169,110,.6) 30%,rgba(201,169,110,.6) 70%,transparent 95%);}
+.vm-sub{font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:3px;color:var(--gold);margin-bottom:.7rem;font-weight:600;}
+.vm-text{font-size:.95rem;color:var(--tm);line-height:2;font-weight:300;}
+@media(max-width:600px){.vm-grid{grid-template-columns:1fr;}}
+
+/* Strengths */
+.str-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;}
+.str-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.2rem;transition:all .35s;}
+.str-card:hover{border-color:rgba(201,169,110,.35);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,169,110,.07);}
+.str-header{display:flex;align-items:center;justify-content:flex-end;flex-direction:row-reverse;gap:.5rem;margin-bottom:.4rem;}
+.str-ico{flex-shrink:0;display:flex;align-items:center;opacity:.75;}
+.str-t{font-family:'Amiri',serif;font-size:.92rem;font-weight:700;color:var(--gl);line-height:1.4;}
+.str-d{font-size:var(--xs);color:var(--ts);line-height:1.7;}
+
+/* Talents */
+.tal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
+.tal-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.1rem;text-align:center;transition:all .3s;}
+.tal-card:hover{border-color:rgba(201,169,110,.28);transform:translateY(-2px);}
+.tal-ico{display:flex;justify-content:center;margin-bottom:.45rem;}
+.tal-t{font-family:'Amiri',serif;font-size:.88rem;font-weight:700;color:var(--beige);margin-bottom:.2rem;}
+.tal-d{font-size:var(--xs);color:var(--ts);}
+@media(max-width:600px){.tal-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ── ACHIEVEMENTS PAGE ── */
+.aw-list{display:flex;flex-direction:column;gap:8px;}
+.aw-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.1rem 1.4rem;display:grid;grid-template-columns:38px 1fr 38px;align-items:center;gap:1rem;transition:all .3s;}
+.aw-card.gold-card{border-color:rgba(201,169,110,.35);background:rgba(201,169,110,.04);position:relative;overflow:hidden;}
+.aw-card.gold-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.6),transparent);}
+.aw-card:hover{border-color:rgba(201,169,110,.38);transform:translateX(-3px);}
+.aw-medal{text-align:center;}
+.aw-t{font-family:'Amiri',serif;font-size:.96rem;font-weight:700;color:var(--beige);margin-bottom:.1rem;}
+.aw-o{font-size:.68rem;color:var(--gold);margin-bottom:.12rem;}
+.aw-d{font-size:var(--xs);color:var(--ts);line-height:1.6;}
+.aw-ico{width:36px;height:36px;border-radius:50%;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.16);display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+@media(max-width:700px){.aw-card{grid-template-columns:32px 1fr;}.aw-ico{display:none;}}
+.cert-grid{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;}
+.cert-grid .cert-card{flex:1 1 190px;max-width:calc(33.33% - .6rem);}
+.cert-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.3rem;text-align:center;transition:all .3s;}
+.cert-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-2px);}
+.cert-seal{display:flex;justify-content:center;margin-bottom:.5rem;}
+.cert-t{font-family:'Amiri',serif;font-size:.92rem;font-weight:700;color:var(--gl);margin-bottom:.3rem;}
+.cert-d{font-size:var(--xs);color:var(--ts);line-height:1.65;}
+.jtl{position:relative;padding-right:1.8rem;}
+.jtl::before{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),rgba(201,169,110,.1),transparent);}
+.jtl-item{position:relative;padding:.8rem 2rem .8rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.jtl-item:last-child{border:none;}
+.jtl-dot{position:absolute;right:-5px;top:1.1rem;width:9px;height:9px;background:rgba(201,169,110,.3);border:1px solid var(--gold);border-radius:50%;}
+.jtl-dot-gold{background:var(--gold);box-shadow:0 0 10px rgba(201,169,110,.5);}
+.jtl-dot-burg{background:var(--burg);border-color:var(--burg);box-shadow:0 0 10px rgba(123,29,46,.4);}
+.jtl-year{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:3px;color:var(--gold);margin-bottom:.22rem;}
+.jtl-t{font-family:'Amiri',serif;font-size:.96rem;font-weight:700;color:var(--beige);margin-bottom:.15rem;}
+.jtl-d{font-size:var(--xs);color:var(--ts);}
+
+/* ── PROJECTS PAGE ── */
+.init-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--radius);padding:1.4rem;transition:all .3s;margin-bottom:.8rem;}
+.init-card:hover{border-color:rgba(201,169,110,.32);box-shadow:0 6px 24px rgba(201,169,110,.08);transform:translateY(-2px);}
+.in-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.7rem;}
+.in-num{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:400;color:rgba(201,169,110,.15);line-height:1;}
+.badge{padding:.22rem .6rem;border-radius:50px;font-size:.62rem;font-weight:700;}
+.b-done{background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.28);color:var(--gold);}
+.in-t{font-family:'Amiri',serif;font-size:1.05rem;font-weight:700;color:var(--beige);margin-bottom:.28rem;}
+.in-te{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:2px;color:var(--ts);text-transform:uppercase;margin-bottom:.65rem;}
+.in-d{font-size:var(--small);color:var(--tm);line-height:1.85;text-align:right;}
+.in-role{margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--bd);font-size:var(--xs);color:var(--gold);}
+.in-stat{display:inline-flex;align-items:center;gap:.4rem;margin-top:.75rem;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.2);padding:.22rem .65rem;border-radius:50px;font-size:.62rem;color:var(--gl);}
+.up-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
+.up-card{background:var(--card);border:1px solid rgba(123,29,46,.35);border-radius:var(--radius);padding:1.2rem;position:relative;overflow:hidden;transition:all .3s;}
+.up-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--burg),transparent);}
+.up-card:hover{border-color:rgba(201,169,110,.26);transform:translateY(-2px);}
+.up-ico{display:flex;justify-content:center;margin-bottom:.5rem;}
+.up-t{font-family:'Amiri',serif;font-size:.93rem;font-weight:700;color:var(--beige);margin-bottom:.2rem;}
+.up-te{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:2px;color:var(--ts);text-transform:uppercase;margin-bottom:.4rem;}
+.up-d{font-size:var(--xs);color:var(--tm);line-height:1.7;}
+.up-tag{display:inline-flex;align-items:center;gap:.25rem;margin-top:.6rem;background:rgba(123,29,46,.16);border:1px solid rgba(123,29,46,.35);color:#E07090;padding:.18rem .6rem;border-radius:50px;font-size:.6rem;}
+@media(max-width:720px){.up-grid{grid-template-columns:1fr;}}
+
+/* ENTREPRENEURIAL */
+.ent-banner{background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(123,29,46,.08));border:1px solid rgba(201,169,110,.22);border-radius:16px;padding:1.4rem 1.6rem;margin-bottom:1.8rem;text-align:center;}
+.ent-banner p{font-family:'Amiri',serif;font-size:1rem;color:var(--beige);line-height:2;margin-bottom:.4rem;}
+.ent-banner .tagline{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.key-learn{display:flex;flex-direction:column;gap:.5rem;}
+.kl-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:10px;border-right:3px solid var(--gold);}
+.kl-t{font-size:var(--small);color:var(--tm);}
+.kl-en{color:var(--ts);font-size:.68rem;}
+.proj-detail{background:var(--card);border:1px solid rgba(201,169,110,.25);border-radius:var(--radius);padding:1.3rem;margin-bottom:.85rem;}
+.pd-head{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
+.pd-head::before{content:'';width:10px;height:1px;background:var(--gold);display:inline-block;}
+
+/* ── IMPACT PAGE ── */
+.lead-grid{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;}
+.lead-grid .lead-card{flex:1 1 200px;max-width:calc(33.33% - .6rem);}
+.lead-card{background:rgba(201,169,110,.05);border:1px solid rgba(201,169,110,.18);border-radius:var(--radius);padding:1.2rem;transition:all .3s;}
+.lead-card:hover{background:rgba(201,169,110,.09);transform:translateY(-2px);}
+.lead-header{display:flex;align-items:center;justify-content:flex-end;flex-direction:row-reverse;gap:.5rem;margin-bottom:.3rem;}
+.lead-ico{flex-shrink:0;display:flex;align-items:center;opacity:.75;}
+.lead-t{font-family:'Amiri',serif;font-size:.93rem;font-weight:700;color:var(--gl);line-height:1.4;}
+.lead-sub{font-family:'Cinzel',serif;font-size:.5rem;letter-spacing:2px;color:var(--ts);text-transform:uppercase;}
+.lead-desc{font-size:.74rem;color:var(--ts);margin-top:.4rem;line-height:1.7;}
+.tl{position:relative;padding-right:1.6rem;}
+.tl::before{content:'';position:absolute;right:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold),rgba(201,169,110,.15),transparent);}
+.tl-item{position:relative;padding:.9rem 1.5rem .9rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.tl-item:last-child{border:none;}
+.tl-item::before{content:'';position:absolute;right:-4px;top:1.15rem;width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 8px rgba(201,169,110,.4);}
+.tl-t{font-family:'Amiri',serif;font-size:.96rem;font-weight:700;color:var(--beige);margin-bottom:.22rem;}
+.tl-d{font-size:var(--small);color:var(--tm);line-height:1.7;}
+.vol-quote{margin-top:1.5rem;padding:1rem 1.3rem;border:1px solid var(--bd);border-radius:var(--radius);border-right:3px solid var(--gold);}
+.vol-quote p{font-family:'Amiri',serif;font-style:italic;font-size:.95rem;color:var(--ts);}
+
+/* ── CONTACT PAGE ── */
+.con-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+@media(max-width:720px){.con-grid{grid-template-columns:1fr;}}
+.c-intro{font-size:var(--body);color:var(--tm);line-height:1.85;margin-bottom:1.1rem;font-weight:300;}
+.c-link{display:flex;align-items:center;gap:.8rem;padding:.8rem 0;border-bottom:1px solid var(--bd);text-decoration:none;color:var(--tm);transition:all .3s;}
+.c-link:hover{color:var(--gold);padding-right:.5rem;}
+.c-ico{width:36px;height:36px;border:1px solid var(--bd);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .3s;flex-shrink:0;}
+.c-link:hover .c-ico{border-color:var(--gold);background:rgba(201,169,110,.08);}
+.c-lbl{font-size:var(--small);font-weight:500;}
+.c-sub{font-size:.63rem;color:var(--ts);}
+.c-arr{margin-right:auto;color:var(--ts);transition:transform .3s;}
+.c-link:hover .c-arr{transform:translateX(-3px);color:var(--gold);}
+.con-form{display:flex;flex-direction:column;gap:.8rem;}
+.fg{display:flex;flex-direction:column;gap:.28rem;}
+.fg label{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.fg input,.fg textarea{background:var(--card);border:1px solid var(--bd);color:var(--beige);padding:.7rem .9rem;font-family:'Tajawal',sans-serif;font-size:var(--small);font-weight:300;outline:none;transition:all .3s;resize:none;border-radius:10px;direction:rtl;}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--ts);}
+.fg input:focus,.fg textarea:focus{border-color:rgba(201,169,110,.4);}
+.fg textarea{height:90px;}
+.btn-send{background:linear-gradient(135deg,#9A7040,var(--gold));color:var(--bg);border:none;padding:.75rem 1.6rem;font-family:'Cinzel',serif;font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all .3s;align-self:flex-start;}
+.btn-send:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(201,169,110,.25);}
+
+/* ── QUOTE BLOCK ── */
+.quote-block{background:var(--d1);padding:80px 6%;text-align:center;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.qb-inner{max-width:700px;margin:0 auto;}
+.qb-mark{font-size:3rem;color:rgba(201,169,110,.13);font-family:'Cinzel',serif;margin-bottom:.6rem;line-height:1;}
+.qb-text{font-family:'Amiri',serif;font-size:1.3rem;color:var(--tm);line-height:2.1;font-style:italic;}
+.qb-line{width:60px;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,110,.4),transparent);margin:1.6rem auto .8rem;}
+.qb-name{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:5px;color:var(--gold);text-transform:uppercase;}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--d1);border-top:1px solid var(--bd);padding:1.4rem 6%;text-align:center;}
+.site-footer p{font-family:'Cinzel',serif;font-size:.48rem;letter-spacing:3.5px;color:rgba(201,169,110,.3);text-transform:uppercase;}
+footer{display:none;}
+
+/* ── SCROLL HINT ── */
+.scroll-hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.25;z-index:1;}
+.scroll-hint span{font-family:'Cinzel',serif;font-size:.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.sbar{width:1px;height:30px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sb 2s ease-in-out infinite;}
+@keyframes sb{0%,100%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* ── BTNs ── */
+.btn-gold{background:linear-gradient(135deg,#9A7040,var(--gold));color:var(--bg);padding:.68rem 1.5rem;border-radius:50px;text-decoration:none;font-family:'Cinzel',serif;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .3s;box-shadow:0 4px 16px rgba(201,169,110,.2);cursor:pointer;border:none;}
+.btn-gold:hover{box-shadow:0 8px 26px rgba(201,169,110,.3);transform:translateY(-2px);}
+.btn-out{border:1px solid rgba(201,169,110,.34);color:var(--gold);padding:.68rem 1.5rem;border-radius:50px;text-decoration:none;font-family:'Cinzel',serif;font-size:.62rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:all .3s;background:none;cursor:pointer;}
+.btn-out:hover{border-color:var(--gold);background:rgba(201,169,110,.07);}
+.hero-btns{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="logo"><div class="logo-dot"></div>Almayasa Alkaabi</div>
+  <div class="nav-links">
+    <a class="nav-link active" onclick="showPage('home',this)">Home</a>
+    <a class="nav-link" onclick="showPage('about',this)">About</a>
+    <a class="nav-link" onclick="showPage('achievements',this)">Achievements</a>
+    <a class="nav-link" onclick="showPage('projects',this)">Projects</a>
+    <a class="nav-link" onclick="showPage('impact',this)">Impact</a>
+    <a class="nav-link" onclick="showPage('contact',this)">Contact</a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">AR | EN</button>
+    <button class="nav-mobile-btn" id="mobBtn" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobMenu">
+  <a class="mob-link active" onclick="showPage('home');toggleMob()">Home</a>
+  <div class="mob-divider"></div>
+  <a class="mob-link" onclick="showPage('about');toggleMob()">About</a>
+  <div class="mob-divider"></div>
+  <a class="mob-link" onclick="showPage('achievements');toggleMob()">Achievements</a>
+  <div class="mob-divider"></div>
+  <a class="mob-link" onclick="showPage('projects');toggleMob()">Projects</a>
+  <div class="mob-divider"></div>
+  <a class="mob-link" onclick="showPage('impact');toggleMob()">Impact</a>
+  <div class="mob-divider"></div>
+  <a class="mob-link" onclick="showPage('contact');toggleMob()">Contact</a>
+  <button class="mob-lang" id="mobLangBtn" onclick="toggleLang()">AR | EN</button>
+</div>
+
+<!-- ══════════════════ HOME PAGE ══════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-star" style="width:1.5px;height:1.5px;top:12%;left:18%;animation-delay:.3s;"></div>
+    <div class="hero-star" style="width:1px;height:1px;top:22%;right:14%;animation-delay:1.1s;"></div>
+    <div class="hero-star" style="width:1.5px;height:1.5px;bottom:30%;left:10%;animation-delay:.7s;"></div>
+    <div class="hero-star" style="width:1px;height:1px;bottom:22%;right:18%;animation-delay:2s;"></div>
+    <div class="note-banner"><p class="hero-note">✦ &nbsp; هذه فقط <em>لمحة عني</em> — لا تزال هناك أشياء كثيرة قادمة &nbsp;✦</p></div>
+    <div class="hero-badge hero-badge-el">✦ &nbsp; Future Computer Engineer &nbsp; ✦</div>
+    <div class="hero-tags">
+      <span class="htag">طالبة تقنية معلومات</span>
+      <span class="htag-sep">·</span>
+      <span class="htag">قائدة مبادرات</span>
+      <span class="htag-sep">·</span>
+      <span class="htag">رائدة أعمال شابة</span>
+    </div>
+    <h1 class="hname-ar grad-text">المياسة الكعبي</h1>
+    <div class="name-divider"><span></span><span class="nd-gem">✦</span><span></span></div>
+    <p class="hname-en">Almayasa Alkaabi</p>
+    <p class="hspec">Information Technology · تكنولوجيا المعلومات</p>
+    <p class="hschool">مدرسة قطر التقنية الثانوية للبنات</p>
+    <p class="hero-tagline">رحلة في التقنية والابتكار وصناعة الأثر.</p>
+    <div class="hero-btns">
+      <a class="btn-primary" onclick="showPage('about')">اكتشف مسيرتي</a>
+      <a class="btn-secondary" onclick="showPage('contact')">تواصل معي</a>
+    </div>
+    <div class="scroll-hint"><div class="sbar"></div><span>scroll</span></div>
+  </section>
+
+  <div class="mq-wrap"><div class="mq-track">
+    <div class="mq-item">Design</div><div class="mq-item">Robotics</div><div class="mq-item">Programming</div><div class="mq-item">AI</div><div class="mq-item">Leadership</div><div class="mq-item">Photography</div><div class="mq-item">Horse Riding</div><div class="mq-item">Public Speaking</div><div class="mq-item">Quran</div><div class="mq-item">Piano</div>
+    <div class="mq-item">Design</div><div class="mq-item">Robotics</div><div class="mq-item">Programming</div><div class="mq-item">AI</div><div class="mq-item">Leadership</div><div class="mq-item">Photography</div><div class="mq-item">Horse Riding</div><div class="mq-item">Public Speaking</div><div class="mq-item">Quran</div><div class="mq-item">Piano</div>
+  </div></div>
+
+  <section class="section" style="background:var(--d1);">
+    <div class="inner">
+      <div class="sh" style="margin-top:0;"><div class="sh-label">استكشف الموقع <span class="ar-label">· Explore</span></div></div>
+      <div style="display:flex;justify-content:center;">
+        <div class="nav-cards">
+          <a class="nav-card" onclick="showPage('about')">
+            <div class="nc-ico"><svg width="16" height="16" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="nc-t">About Me</div><div class="nc-d">القصة · القيم · الاهتمامات</div></div>
+          </a>
+          <a class="nav-card" onclick="showPage('achievements')">
+            <div class="nc-ico"><svg width="16" height="16" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+            <div><div class="nc-t">Achievements</div><div class="nc-d">الإنجازات · الشهادات · المسيرة</div></div>
+          </a>
+          <a class="nav-card" onclick="showPage('projects')">
+            <div class="nc-ico"><svg width="16" height="16" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div><div class="nc-t">Projects</div><div class="nc-d">المبادرات · المشاريع الرقمية</div></div>
+          </a>
+          <a class="nav-card" onclick="showPage('impact')">
+            <div class="nc-ico"><svg width="16" height="16" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><div class="nc-t">Impact</div><div class="nc-d">القيادة · الأثر المجتمعي</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="quote-block"><div class="qb-inner">
+    <div class="qb-mark">❝</div>
+    <p class="qb-text">أؤمن أن التقنية ليست مجرد أدوات، بل وسيلة لصناعة أثر حقيقي في المجتمع.</p>
+    <div class="qb-line"></div><p class="qb-name">Almayasa Alkaabi</p>
+  </div></div>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<!-- ══════════════════ ABOUT PAGE ══════════════════ -->
+<div id="page-about" class="page">
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">My Story <span class="ar-label">· قصتي</span></div></div>
+      <div class="about-grid">
+        <div>
+          <div class="about-bio">
+            <p>أنا <strong>المياسة الكعبي</strong>، طالبة في مدرسة قطر التقنية الثانوية للبنات، وشغفي الحقيقي يكمن في المجالات التي تجمع بين التقنية والإبداع وصناعة الأثر.</p>
+            <p>بدأ اهتمامي مبكرًا في التصميم والروبوتات والذكاء الاصطناعي، ومع الوقت تحوّل هذا الاهتمام إلى مبادرات ومشاريع أسعى من خلالها لإحداث تأثير إيجابي داخل المجتمع المدرسي وخارجه.</p>
+            <p>أؤمن أن التقنية ليست مجرد أدوات، بل وسيلة لصناعة التغيير وتمكين الآخرين، لذلك أحرص على تطوير مهاراتي في الابتكار والقيادة والمبادرات المجتمعية.</p>
+            <p>طموحي أن أصبح مهندسة كمبيوتر أساهم في تطوير حلول تقنية مبتكرة تخدم بلادي وتسهم في بناء مستقبل أكثر تطورًا واستدامة.</p>
+          </div>
+          <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--bd);">
+            <p class="sk-lbl">Core Expertise · خبراتي الأساسية</p>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><circle cx="13.5" cy="6.5" r="3.5"/><path d="M2 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span><span class="sk-name">التصميم · Design</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/><circle cx="9" cy="16" r="1" fill="var(--gl)"/><circle cx="15" cy="16" r="1" fill="var(--gl)"/></svg></span><span class="sk-name">الروبوتات · Robotics</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div></div>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span><span class="sk-name">البرمجة · Programming</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div></div>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><path d="M12 2a5 5 0 0 1 5 5c0 5-5 13-5 13S7 12 7 7a5 5 0 0 1 5-5z"/><circle cx="12" cy="7" r="2"/></svg></span><span class="sk-name">الذكاء الاصطناعي · AI</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></span><span class="sk-name">الإلقاء · Public Speaking</span><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
+            <div class="sk-row"><span class="sk-ico"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span><span class="sk-name">تنظيم الفعاليات · Organizing</span><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="iblock">
+            <div class="ib-t">Personal Info · معلومات شخصية</div>
+            <div class="ib-row"><span class="ib-k">الاسم</span><span class="ib-v">المياسة الكعبي</span></div>
+            <div class="ib-row"><span class="ib-k">Name</span><span class="ib-v">Almayasa Alkaabi</span></div>
+            <div class="ib-row"><span class="ib-k">المدرسة</span><span class="ib-v">Qatar Technical School</span></div>
+            <div class="ib-row"><span class="ib-k">التخصص</span><span class="ib-v">IT · تكنولوجيا المعلومات</span></div>
+            <div class="ib-row"><span class="ib-k">الدولة</span><span class="ib-v">🇶🇦 قطر</span></div>
+          </div>
+          <div class="iblock">
+            <div class="ib-t">Hobbies · الهوايات</div>
+            <div class="hob-wrap">
+              <span class="hob">🐎 ركوب الخيل</span><span class="hob">📷 تصوير</span><span class="hob">🎤 إلقاء</span>
+              <span class="hob">📝 توثيق الفعاليات</span><span class="hob">⭐ تطوير الذات</span><span class="hob">🪡 أعمال إبداعية</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Vision &amp; Mission <span class="ar-label">· رؤيتي ورسالتي</span></div></div>
+      <div class="vm-grid">
+        <div class="vm-card"><div class="vm-sub">🎯 | VISION · رؤيتي</div><p class="vm-text">أن أكون شخصية مؤثرة تسهم في تمكين الفتيات في مجالات التقنية، وأن أصبح مهندسة كمبيوتر أطوّر حلولًا مبتكرة تخدم بلادي وتواكب تطورات المستقبل.</p></div>
+        <div class="vm-card"><div class="vm-sub">💡 | MISSION · رسالتي</div><p class="vm-text">تسخير معرفتي ومبادراتي لتمكين الفتيات علميًا وتقنيًا، وتعزيز حضورهن في المجالات التقنية بثقة وكفاءة، بما يسهم في خدمة الوطن وتنميته.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Key Strengths <span class="ar-label">· نقاط قوتي</span></div></div>
+      <div class="str-grid">
+        <div class="str-card"><div class="str-header"><div class="str-t">تحمّل المسؤولية والانضباط</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div></div><div class="str-d">الالتزام بالمهام والعمل بروح المسؤولية لتحقيق أفضل النتائج.</div></div>
+        <div class="str-card"><div class="str-header"><div class="str-t">القيادة وتحفيز الفريق</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M2 20h20M4 20V10l8-7 8 7v10"/></svg></div></div><div class="str-d">القدرة على قيادة الفرق وتنظيم العمل الجماعي لتحقيق أهداف مشتركة.</div></div>
+        <div class="str-card"><div class="str-header"><div class="str-t">التفكير التحليلي والإبداعي</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 2a5 5 0 0 1 5 5c0 5-5 13-5 13S7 12 7 7a5 5 0 0 1 5-5z"/><circle cx="12" cy="7" r="2"/></svg></div></div><div class="str-d">القدرة على تحليل المشكلات وإيجاد حلول مبتكرة تجمع بين التفكير المنطقي والإبداع.</div></div>
+        <div class="str-card"><div class="str-header"><div class="str-t">إدارة الوقت وتنظيم الأولويات</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div></div><div class="str-d">القدرة على الموازنة بين الدراسة والمبادرات والمشاركات المختلفة.</div></div>
+        <div class="str-card"><div class="str-header"><div class="str-t">المبادرة وصناعة الفرص</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg></div></div><div class="str-d">السعي إلى تحويل الأفكار إلى مبادرات ومشاريع ذات أثر حقيقي.</div></div>
+        <div class="str-card"><div class="str-header"><div class="str-t">العمل تحت الضغط</div><div class="str-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div></div><div class="str-d">القدرة على الحفاظ على الأداء الجيد في بيئات العمل السريعة أو أثناء المسابقات.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Passions &amp; Interests <span class="ar-label">· اهتماماتي وشغفي</span></div></div>
+      <div class="tal-grid">
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div><div class="tal-t">التحدث أمام الجمهور</div><div class="tal-d">الإلقاء والمشاركة في الأنشطة التي تتطلب التواصل مع الجمهور.</div></div>
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><div class="tal-t">العزف على البيانو</div><div class="tal-d">تنمية الحس الفني من خلال تعلم الموسيقى.</div></div>
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="tal-t">تلاوة القرآن والإنشاد</div><div class="tal-d">المشاركة في الأنشطة الصوتية الدينية.</div></div>
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="13.5" cy="6.5" r="3.5"/><path d="M2 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="tal-t">التصميم والإبداع الرقمي</div><div class="tal-d">تصميم المحتوى الرقمي وبناء الهويات البصرية.</div></div>
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg></div><div class="tal-t">الابتكار والتقنية</div><div class="tal-d">استكشاف التقنيات الجديدة ومتابعة التطورات في المجال التقني.</div></div>
+        <div class="tal-card"><div class="tal-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="tal-t">تنظيم الفعاليات والمبادرات</div><div class="tal-d">الاستمتاع بتنظيم الأنشطة والمبادرات الطلابية.</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<!-- ══════════════════ ACHIEVEMENTS PAGE ══════════════════ -->
+<div id="page-achievements" class="page">
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Honors &amp; Achievements <span class="ar-label">· الإنجازات والتكريمات</span></div></div>
+      <div class="aw-list">
+        <div class="aw-card gold-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:#FFD700;stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">الميدالية الذهبية — مسابقة باحث</div><div class="aw-o">ثلاث نسخ متتالية · Baheth Competition — 3 Consecutive Editions</div><div class="aw-d">إنجاز استثنائي بالفوز بالذهب ثلاث مرات متتالية.</div></div><div class="aw-ico">🥇</div></div>
+        <div class="aw-card gold-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:#FFD700;stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">المركز الأول — مسابقة الإنشاد</div><div class="aw-o">مستوى مدارس قطر · Nasheed Competition · Islamic Education Dept.</div><div class="aw-d">المركز الأول على مستوى جميع مدارس قطر بالتعاون مع قسم التربية الإسلامية.</div></div><div class="aw-ico">🎵</div></div>
+        <div class="aw-card gold-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:#FFD700;stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">المركز الثالث — مسابقات المهارات الخليجية</div><div class="aw-o">الدوحة · Gulf Skills — Autonomous Robotics</div><div class="aw-d">المركز الثالث في فئة الروبوتات ذاتية الحركة في مسابقات المهارات الخليجية.</div></div><div class="aw-ico">🤖</div></div>
+        <div class="aw-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">مسابقة نحو الاستدامة</div><div class="aw-o">Sustainability Competition</div><div class="aw-d">تصميم مجلة بيئية احترافية مكونة من 10 صفحات بأدوات رقمية حديثة.</div></div><div class="aw-ico">🌍</div></div>
+        <div class="aw-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">بطولة المدارس للروبوت — النسخة 16</div><div class="aw-o">Schools Robotics Championship · Edition 16</div></div><div class="aw-ico">🏆</div></div>
+        <div class="aw-card"><div class="aw-medal"><svg width="22" height="22" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div><div><div class="aw-t">مسابقات تلاوة القرآن الكريم</div><div class="aw-o">Quran Recitation Competitions · Two Consecutive Years</div><div class="aw-d">مشاركة لعامين متتاليين في مسابقات تلاوة القرآن الكريم.</div></div><div class="aw-ico">✦</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Certifications &amp; Development <span class="ar-label">· الشهادات والتطور</span></div></div>
+      <div class="cert-grid">
+        <div class="cert-card"><div class="cert-seal"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="cert-t">الأمن السيبراني وإدارة المخاطر</div><div class="cert-d">شهادة معتمدة في أساسيات الأمن السيبراني وحماية الأنظمة والمعلومات الرقمية.</div></div>
+        <div class="cert-card"><div class="cert-seal"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="cert-t">MOS — Microsoft Office Specialist</div><div class="cert-d">Word · PowerPoint · Excel<br>شهادة معتمدة من Microsoft.</div></div>
+        <div class="cert-card"><div class="cert-seal"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M2 20h20M4 20V10l8-7 8 7v10"/></svg></div><div class="cert-t">دورات القيادة وتطوير الذات</div><div class="cert-d">المشاركة في برامج تدريبية لتنمية المهارات القيادية والشخصية.</div></div>
+        <div class="cert-card"><div class="cert-seal"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div class="cert-t">دورات في التقنية والابتكار</div><div class="cert-d">الاستمرار في المشاركة في الدورات التقنية لتعزيز المهارات الرقمية.</div></div>
+        <div class="cert-card"><div class="cert-seal"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><div class="cert-t">برامج التدريب الطلابي</div><div class="cert-d">المشاركة في ورش تدريبية ومبادرات تعليمية متنوعة.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">My Journey <span class="ar-label">· مسيرتي</span></div></div>
+      <div class="jtl">
+        <div class="jtl-item"><div class="jtl-dot"></div><div class="jtl-year">2023</div><div class="jtl-t">بداية رحلتي في المسابقات التقنية</div><div class="jtl-d">المشاركة الأولى في المسابقات العلمية والتقنية مثل الروبوتات والبحث العلمي.</div></div>
+        <div class="jtl-item"><div class="jtl-dot jtl-dot-gold"></div><div class="jtl-year">🥇 2023 – 2025</div><div class="jtl-t">الميدالية الذهبية — مسابقة باحث</div><div class="jtl-d">تحقيق الميدالية الذهبية في مسابقة باحث لثلاث سنوات متتالية.</div></div>
+        <div class="jtl-item"><div class="jtl-dot"></div><div class="jtl-year">2024</div><div class="jtl-t">بطولة المدارس للروبوت — النسخة 16</div><div class="jtl-d">المشاركة في بطولة الروبوتات المدرسية واكتساب خبرة في مجال الروبوتات.</div></div>
+        <div class="jtl-item"><div class="jtl-dot jtl-dot-gold"></div><div class="jtl-year">2024</div><div class="jtl-t">إطلاق العلامة التجارية — Sahra Threads</div><div class="jtl-d">إطلاق مشروع ريادي في مجال الأزياء وإدارته بشكل مستقل من الفكرة إلى التنفيذ.</div></div>
+        <div class="jtl-item"><div class="jtl-dot"></div><div class="jtl-year">2025</div><div class="jtl-t">الانضمام إلى مدرسة قطر التقنية الثانوية للبنات</div><div class="jtl-d">بداية دراسة تخصص تكنولوجيا المعلومات وتطوير المهارات التقنية والقيادية.</div></div>
+        <div class="jtl-item"><div class="jtl-dot jtl-dot-gold"></div><div class="jtl-year">2025</div><div class="jtl-t">المركز الثالث — مسابقات المهارات الخليجية</div><div class="jtl-d">تحقيق المركز الثالث في فئة الروبوتات ضمن منافسات المهارات الخليجية.</div></div>
+        <div class="jtl-item"><div class="jtl-dot"></div><div class="jtl-year">2025 – 2026</div><div class="jtl-t">تطوير مشاريع رقمية تعليمية ومجتمعية</div><div class="jtl-d">تصميم وتنفيذ مشاريع رقمية مثل المواقع التعليمية والمنصات الرقمية.</div></div>
+        <div class="jtl-item"><div class="jtl-dot jtl-dot-gold"></div><div class="jtl-year">2026</div><div class="jtl-t">إطلاق مبادرة رمضان بركة وعطاء</div><div class="jtl-d">مبادرة إنسانية لتعزيز ثقافة العطاء والعمل التطوعي خلال شهر رمضان.</div></div>
+        <div class="jtl-item"><div class="jtl-dot jtl-dot-burg"></div><div class="jtl-year">+2026</div><div class="jtl-t">طموح نحو هندسة الكمبيوتر والابتكار التقني</div><div class="jtl-d">الاستمرار في تطوير المشاريع التقنية والمبادرات المجتمعية.</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<!-- ══════════════════ PROJECTS PAGE ══════════════════ -->
+<div id="page-projects" class="page">
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Initiatives &amp; Projects <span class="ar-label">· مبادراتي ومشاريعي</span></div></div>
+      <div class="init-card">
+        <div class="in-header"><div class="in-num">01</div><div class="badge b-done">✓ منجزة</div></div>
+        <div class="in-t">مبادرة رمضان بركة وعطاء</div><div class="in-te">Ramadan Blessings Initiative</div>
+        <p class="in-d">مبادرة إنسانية أطلقتها خلال شهر رمضان لتعزيز قيم العطاء والمسؤولية المجتمعية، وامتد أثرها خارج الدولة. تم تنفيذ أكثر من خمسة أنشطة تطوعية متكاملة شملت تجهيز وجبات إفطار صائم وتنظيم أعمال خيرية أسبوعية.</p>
+        <div class="in-stat"><svg width="14" height="14" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg> 5+ أنشطة تطوعية</div>
+        <div class="in-role">دوري: المبادِرة، قائدة الفريق، التخطيط والتنفيذ</div>
+      </div>
+      <div class="init-card">
+        <div class="in-header"><div class="in-num">02</div><div class="badge b-done">✓ منجزة</div></div>
+        <div class="in-t">ورشة التصميم الإبداعي</div><div class="in-te">Creative Design Workshop</div>
+        <p class="in-d">ورشة تدريبية هدفت إلى تطوير مهارات التصميم الرقمي واستخدام الأدوات الحديثة في إعداد المحتوى التعليمي.</p>
+        <div class="in-role">دوري: المصممة والمدربة</div>
+      </div>
+      <div class="init-card">
+        <div class="in-header"><div class="in-num">03</div><div class="badge b-done">✓ منجزة</div></div>
+        <div class="in-t">العلامة التجارية للملابس</div><div class="in-te">Fashion Clothing Brand · Sahra Threads</div>
+        <p class="in-d">مشروع ريادي يهدف إلى تقديم تصاميم ملابس مميزة تستهدف فئات عمرية متعددة، تم تطويره وإدارته بشكل مستقل.</p>
+        <div class="in-role">دوري: المؤسسة والمديرة الإبداعية</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Digital Projects <span class="ar-label">· مشاريعي الرقمية</span></div></div>
+      <p style="text-align:center;font-size:.84rem;color:var(--ts);max-width:540px;margin:0 auto 1.8rem;line-height:1.85;">أعمل على تطوير مشاريع رقمية تهدف إلى توظيف التقنية في التعليم وخدمة المجتمع وبناء حلول مبتكرة.</p>
+
+      <!-- Project 1 -->
+      <div class="init-card" style="background:linear-gradient(140deg,rgba(201,169,110,.08),rgba(123,29,46,.05));border-color:rgba(201,169,110,.28);">
+        <div class="in-header">
+          <div style="display:flex;align-items:center;gap:.6rem;"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><div class="in-t" style="margin:0;">زاد رمضان</div></div>
+          <div class="badge b-done">✓ منجز</div>
+        </div>
+        <div class="in-te">Zad Ramadan · Digital Platform</div>
+        <p class="in-d">موقع رقمي يهدف إلى مساعدة المستخدمين على استثمار العشر الأواخر من رمضان من خلال تقديم محتوى إيماني وتذكيرات بالأعمال الصالحة وتنظيم المبادرات التطوعية.</p>
+        <div style="margin-top:.75rem;padding:.65rem .9rem;background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:9px;border-right:2px solid rgba(201,169,110,.4);">
+          <p style="font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;">أهداف الموقع</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.28rem;">
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>مساعدة المستخدمين على اغتنام العشر الأواخر من رمضان بالأعمال الصالحة</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تقديم محتوى إيماني وتذكيرات يومية تعزز القرب من الله</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تنظيم المبادرات التطوعية وتشجيع المشاركة المجتمعية</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>توظيف التقنية في نشر الخير وتسهيل الوصول إلى الأعمال الخيرية</li>
+          </ul>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;">
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> HTML · CSS · JS</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Web Platform</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Community Tool</div>
+        </div>
+        <div class="in-role">الدور: المصممة والمطورة — بناء كامل للموقع من الفكرة حتى التنفيذ</div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="init-card" style="background:linear-gradient(140deg,rgba(201,169,110,.08),rgba(123,29,46,.05));border-color:rgba(201,169,110,.28);">
+        <div class="in-header">
+          <div style="display:flex;align-items:center;gap:.6rem;"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/><circle cx="9" cy="16" r="1.5" fill="var(--gold)"/><circle cx="15" cy="16" r="1.5" fill="var(--gold)"/></svg><div class="in-t" style="margin:0;">منصة تعليمية تفاعلية</div></div>
+          <div class="badge b-done">✓ منجز</div>
+        </div>
+        <div class="in-te">Interactive Learning Platform · Educational Web Tool</div>
+        <p class="in-d">منصة تعليمية رقمية صممتها لتقديم تجربة تعلم تفاعلية للطالبات من خلال أنشطة متنوعة مثل الاختبارات القصيرة والألعاب التعليمية وأنظمة التحدي المشابهة لأسلوب Kahoot، بهدف جعل المراجعة الدراسية أكثر تشويقًا وتحفيزًا.</p>
+        <div style="margin-top:.75rem;padding:.65rem .9rem;background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:9px;border-right:2px solid rgba(201,169,110,.4);">
+          <p style="font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;">تركّز المنصة على</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.28rem;">
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تقديم أسئلة تفاعلية بأساليب متعددة</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>استخدام أسلوب الألعاب في التعلم (Gamification)</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تحفيز الطالبات على المشاركة والمنافسة التعليمية</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تعزيز الفهم بطريقة ممتعة وسهلة</li>
+          </ul>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;">
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> HTML · CSS · JS</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/></svg> Educational Web Tool</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Gamification</div>
+        </div>
+        <div class="in-role">الدور: تصميم الفكرة — تطوير المنصة — إعداد المحتوى التعليمي</div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="init-card" style="background:linear-gradient(140deg,rgba(201,169,110,.08),rgba(123,29,46,.05));border-color:rgba(201,169,110,.28);">
+        <div class="in-header">
+          <div style="display:flex;align-items:center;gap:.6rem;"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><div class="in-t" style="margin:0;">الموقع الشخصي — البورتفوليو</div></div>
+          <div class="badge b-done">✓ منجز</div>
+        </div>
+        <div class="in-te">Personal Portfolio Website</div>
+        <p class="in-d">موقع رقمي قمت بتصميمه وتطويره لعرض رحلتي في التعلم والإنجازات والمبادرات التي شاركت فيها، بالإضافة إلى توثيق مشاريعي التقنية وتجربتي في ريادة الأعمال والعمل المجتمعي.</p>
+        <div style="margin-top:.75rem;padding:.65rem .9rem;background:rgba(255,255,255,.02);border:1px solid var(--bd);border-radius:9px;border-right:2px solid rgba(201,169,110,.4);">
+          <p style="font-family:'Cinzel',serif;font-size:.52rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:.45rem;">يهدف الموقع إلى</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.28rem;">
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>تقديم صورة شاملة عن مسيرتي الأكاديمية والقيادية</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>عرض المبادرات والمشاريع التي قمت بها</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>توثيق الإنجازات والأنشطة المجتمعية</li>
+            <li style="font-size:.76rem;color:var(--ts);display:flex;align-items:center;gap:.5rem;"><span style="color:var(--gold);font-size:.5rem;">✦</span>بناء هوية رقمية تعكس اهتماماتي وطموحاتي في مجال التقنية</li>
+          </ul>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem;">
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> HTML · CSS · JS</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> Personal Portfolio</div>
+          <div class="in-stat"><svg width="13" height="13" viewBox="0 0 24 24" style="stroke:var(--gl);stroke-width:1.5;fill:none;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Responsive Design</div>
+        </div>
+        <div class="in-role">الدور: تصميم الفكرة — تطوير الموقع — تنظيم المحتوى</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">المشروع الريادي <span class="ar-label">· Entrepreneurial Journey</span></div></div>
+      <div class="ent-banner">
+        <p>أطلقت علامة تجارية للملابس تستهدف فئات عمرية متعددة، وتقدّم تصاميم تجمع بين الهوية العصرية والطابع الإبداعي.<br><br>توليّت إدارة المشروع بشكل كامل، من تطوير الهوية البصرية وتصميم المنتجات والتخطيط للتسويق، وصولًا إلى التواصل مع العملاء وبناء الثقة معهم.</p>
+        <p class="tagline">الريادة لا ترتبط بالعمر · Entrepreneurship Has No Age</p>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="sk-lbl" style="margin-bottom:1rem;">ما تعلّمته من التجربة · Key Learnings</p>
+          <div class="key-learn">
+            <div class="kl-item"><div class="kl-t">إدارة الوقت والمسؤوليات <span class="kl-en">· Time Management</span></div></div>
+            <div class="kl-item"><div class="kl-t">التخطيط المالي وتنظيم الموارد <span class="kl-en">· Financial Planning</span></div></div>
+            <div class="kl-item"><div class="kl-t">التواصل الاحترافي وبناء العلاقات <span class="kl-en">· Communication</span></div></div>
+            <div class="kl-item"><div class="kl-t">اتخاذ القرار وتحمّل النتائج <span class="kl-en">· Decision Making</span></div></div>
+            <div class="kl-item"><div class="kl-t">تطوير الهوية البصرية <span class="kl-en">· Brand Identity</span></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="proj-detail">
+            <div class="pd-head">Project Details</div>
+            <div class="ib-row"><span class="ib-k">المشروع</span><span class="ib-v" style="font-family:'Cinzel',serif;color:var(--gl);">Sahra Threads</span></div>
+            <div class="ib-row"><span class="ib-k">النوع</span><span class="ib-v">Fashion Brand</span></div>
+            <div class="ib-row"><span class="ib-k">الإدارة</span><span class="ib-v">ذاتية بالكامل</span></div>
+            <div class="ib-row" style="border:none;"><span class="ib-k">النتيجة</span><span class="ib-v" style="color:var(--gold);">✓ نجاح ملموس</span></div>
+          </div>
+          <a href="https://www.instagram.com/sahrathreads" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:.9rem;padding:1rem 1.2rem;background:linear-gradient(135deg,rgba(193,53,132,.08),rgba(201,169,110,.06));border:1px solid rgba(193,53,132,.25);border-radius:var(--radius);text-decoration:none;color:var(--beige);transition:all .3s;">
+            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">📷</div>
+            <div><div style="font-size:var(--small);font-weight:600;margin-bottom:.1rem;">View on Instagram</div><div style="font-size:.65rem;color:rgba(193,53,132,.8);">@sahrathreads</div></div>
+            <span style="margin-right:auto;color:var(--ts);">←</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Future Initiatives <span class="ar-label">· المبادرات القادمة</span></div></div>
+      <div class="up-grid">
+        <div class="up-card"><div class="up-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="13.5" cy="6.5" r="3.5"/><path d="M2 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="up-t">ورش التصميم الرقمي المتقدم</div><div class="up-te">Advanced Digital Design</div><p class="up-d">تنظيم ورش تدريبية للطالبات حول بناء الهوية البصرية وتصميم المحتوى الرقمي.</p><div class="up-tag">⏱ قادمة</div></div>
+        <div class="up-card"><div class="up-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M9 11V7a3 3 0 0 1 6 0v4"/><circle cx="9" cy="16" r="1" fill="var(--gold)"/><circle cx="15" cy="16" r="1" fill="var(--gold)"/></svg></div><div class="up-t">برنامج أساسيات الذكاء الاصطناعي</div><div class="up-te">AI Fundamentals Program</div><p class="up-d">برنامج تعليمي مبسط يعرّف الطالبات بمفاهيم الذكاء الاصطناعي وتطبيقاته.</p><div class="up-tag">⏱ قادمة</div></div>
+        <div class="up-card"><div class="up-ico"><svg width="20" height="20" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><div class="up-t">مبادرات لتعزيز الثقافة التقنية في المدارس</div><div class="up-te">Tech Culture in Schools</div><p class="up-d">تنظيم أنشطة وفعاليات تهدف إلى نشر ثقافة الابتكار والتقنية بين الطالبات.</p><div class="up-tag">⏱ قادمة</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<!-- ══════════════════ IMPACT PAGE ══════════════════ -->
+<div id="page-impact" class="page">
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Leadership &amp; Impact <span class="ar-label">· القيادة والأثر</span></div></div>
+      <div class="lead-grid">
+        <div class="lead-card"><div class="lead-header"><div class="lead-t">قيادة المبادرات الطلابية</div><div class="lead-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div></div><div class="lead-sub">Initiatives Leader</div><p class="lead-desc">قيادة وتنظيم عدد من المبادرات التي تهدف إلى تعزيز التطوع وخدمة المجتمع.</p></div>
+        <div class="lead-card"><div class="lead-header"><div class="lead-t">تنظيم الفعاليات المدرسية</div><div class="lead-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div></div><div class="lead-sub">Events Organizer</div><p class="lead-desc">المساهمة في تنظيم الفعاليات والأنشطة التعليمية داخل المدرسة.</p></div>
+        <div class="lead-card"><div class="lead-header"><div class="lead-t">نشر ثقافة التقنية والابتكار</div><div class="lead-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div></div><div class="lead-sub">Tech Culture Advocate</div><p class="lead-desc">تشجيع الطالبات على اكتشاف قدراتهن في مجالات التقنية والإبداع.</p></div>
+        <div class="lead-card"><div class="lead-header"><div class="lead-t">المشاركة في الأنشطة المجتمعية</div><div class="lead-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div></div><div class="lead-sub">Community Volunteer</div><p class="lead-desc">المشاركة في فعاليات تطوعية ومجتمعية تعزز روح المسؤولية المجتمعية.</p></div>
+        <div class="lead-card"><div class="lead-header"><div class="lead-t">تمكين الطالبات في المجالات التقنية</div><div class="lead-ico"><svg width="18" height="18" viewBox="0 0 24 24" style="stroke:var(--gold);stroke-width:1.5;fill:none;"><circle cx="13.5" cy="6.5" r="3.5"/><path d="M2 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div></div><div class="lead-sub">Girls in Tech</div><p class="lead-desc">المساهمة في دعم وتشجيع الفتيات على دخول مجالات التقنية والابتكار.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Community Impact <span class="ar-label">· الأثر المجتمعي</span></div></div>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-t">التطوع في معرض الكتاب</div><div class="tl-d">مركز قطر التطوعي · Qatar Volunteer Center · Book Fair</div></div>
+        <div class="tl-item"><div class="tl-t">المشاركة في فعاليات الرازجي — درب الساعي</div><div class="tl-d">Al-Razgi Events · Darb Al-Saei</div></div>
+        <div class="tl-item"><div class="tl-t">تنظيم اليوم الرياضي داخل المدرسة</div><div class="tl-d">School Sports Day Organizer</div></div>
+        <div class="tl-item"><div class="tl-t">تنظيم معرض البحث والابتكار والاستدامة</div><div class="tl-d">Research, Innovation &amp; Sustainability Exhibition</div></div>
+      </div>
+      <div class="vol-quote"><p>"أؤمن بأن العمل التطوعي جزء أساسي من بناء الشخصية القيادية."</p></div>
+    </div>
+  </section>
+
+  <div class="quote-block"><div class="qb-inner">
+    <div class="qb-mark">❝</div>
+    <p class="qb-text">أسعى لأن أكون جزءًا من الجيل الذي يصنع المستقبل بالتقنية والابتكار ويترك أثرًا إيجابيًا في المجتمع.</p>
+    <div class="qb-line"></div><p class="qb-name">Almayasa Alkaabi</p>
+  </div></div>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<!-- ══════════════════ CONTACT PAGE ══════════════════ -->
+<div id="page-contact" class="page">
+  <section class="section">
+    <div class="inner">
+      <div class="sh"><div class="sh-label">Get In Touch <span class="ar-label">· تواصل معي</span></div></div>
+      <div class="con-grid">
+        <div>
+          <p class="c-intro">يسعدني التواصل معكم للتعاون أو تبادل المعرفة أو أي فرصة.<br>Always open to new ideas and collaborations.</p>
+          <a href="mailto:almayasa.alkaabi@example.com" class="c-link"><div class="c-ico">📧</div><div><div class="c-lbl">Email · البريد</div><div class="c-sub">almayasa.alkaabi@email.com</div></div><span class="c-arr">←</span></a>
+          <a href="https://wa.me/97466114777" target="_blank" rel="noopener" class="c-link"><div class="c-ico" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.3);">💬</div><div><div class="c-lbl">WhatsApp · واتساب</div><div class="c-sub">+974 6611 4777</div></div><span class="c-arr">←</span></a>
+          <a href="https://www.instagram.com/almayasa.alkaabi" target="_blank" rel="noopener" class="c-link"><div class="c-ico" style="background:rgba(193,53,132,.1);border-color:rgba(193,53,132,.3);">📷</div><div><div class="c-lbl">Instagram</div><div class="c-sub">@almayasa.alkaabi</div></div><span class="c-arr">←</span></a>
+        </div>
+        <div class="con-form">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="ما اسمك؟"></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+          <div class="fg"><label>Message</label><textarea placeholder="اكتبي رسالتك..."></textarea></div>
+          <button class="btn-send">← Send</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="site-footer"><p>★ ALL RIGHTS RESERVED — ALMAYASA ALKAABI 2026 ★</p></div>
+</div>
+
+<script>
+// ── NAV SCROLL ──
+window.addEventListener('scroll', function(){
+  var nav = document.getElementById('mainNav');
+  if(nav) nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── PAGE NAVIGATION ──
+function showPage(id, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelectorAll('.mob-link').forEach(l => l.classList.remove('active'));
+  var pg = document.getElementById('page-' + id);
+  if (pg) { pg.classList.add('active'); pg.classList.add('fade-in'); setTimeout(function(){pg.classList.remove('fade-in');},600); window.scrollTo(0,0); }
+  if (navEl) navEl.classList.add('active');
+  else { document.querySelectorAll('.nav-link').forEach(function(l){ if(l.getAttribute('onclick') && l.getAttribute('onclick').includes("'"+id+"'")) l.classList.add('active'); }); }
+  document.querySelectorAll('.mob-link').forEach(function(l){ if(l.getAttribute('onclick') && l.getAttribute('onclick').includes("'"+id+"'")) l.classList.add('active'); });
+}
+
+// ── MOBILE MENU ──
+function toggleMob(){
+  var btn=document.getElementById('mobBtn'), menu=document.getElementById('mobMenu');
+  btn.classList.toggle('open'); menu.classList.toggle('open');
+  document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+}
+
+// ── PHOTO UPLOAD ──
+function loadPhoto(e){
+  var f=e.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(ev){
+    var img=document.getElementById('hPhotoImg'),ph=document.getElementById('hPhotoP');
+    img.src=ev.target.result;img.style.display='block';ph.style.display='none';
+  };r.readAsDataURL(f);
+}
+
+// ── FULL TRANSLATION SYSTEM ──
+// (isAr declared below)
+
+var T = {
+  // NAV
+  'nav-home':       {ar:'الرئيسية',   en:'Home'},
+  'nav-about':      {ar:'من أنا',     en:'About'},
+  'nav-ach':        {ar:'الإنجازات', en:'Achievements'},
+  'nav-proj':       {ar:'المشاريع',  en:'Projects'},
+  'nav-impact':     {ar:'الأثر',      en:'Impact'},
+  'nav-contact':    {ar:'تواصل',      en:'Contact'},
+
+  // MOBILE MENU
+  'mob-home':    {ar:'الرئيسية',   en:'Home'},
+  'mob-about':   {ar:'من أنا',     en:'About'},
+  'mob-ach':     {ar:'الإنجازات', en:'Achievements'},
+  'mob-proj':    {ar:'المشاريع',  en:'Projects'},
+  'mob-impact':  {ar:'الأثر',      en:'Impact'},
+  'mob-contact': {ar:'تواصل',      en:'Contact'},
+
+  // HERO
+  'hero-badge':    {ar:'✦  Future Computer Engineer  ✦', en:'✦  Future Computer Engineer  ✦'},
+  'hero-tag1':     {ar:'طالبة تقنية معلومات', en:'IT Student'},
+  'hero-tag2':     {ar:'قائدة مبادرات',        en:'Initiative Leader'},
+  'hero-tag3':     {ar:'رائدة أعمال شابة',     en:'Young Entrepreneur'},
+  'hero-name':     {ar:'المياسة الكعبي',       en:'Almayasa Alkaabi'},
+  'hero-name-en':  {ar:'Almayasa Alkaabi',     en:'Almayasa Alkaabi'},
+  'hero-spec':     {ar:'Information Technology · تكنولوجيا المعلومات', en:'Information Technology'},
+  'hero-school':   {ar:'مدرسة قطر التقنية الثانوية للبنات', en:'Qatar Technical Secondary School for Girls'},
+  'hero-tagline':  {ar:'رحلة في التقنية والابتكار وصناعة الأثر.', en:'A journey in technology, innovation, and making an impact.'},
+  'hero-note':     {ar:'✦  هذه فقط <em>لمحة عني</em> — لا تزال هناك أشياء كثيرة قادمة  ✦', en:'✦  This is just <em>a glimpse of me</em> — there is so much more to come  ✦'},
+  'hero-btn1':     {ar:'اكتشف مسيرتي', en:'Explore My Journey'},
+  'hero-btn2':     {ar:'تواصل معي',     en:'Get In Touch'},
+
+  // HOME IMPACT
+  'imp-label':   {ar:'حصيلة الإنجاز · Impact',    en:'Impact · حصيلة الإنجاز'},
+  'imp1-num':    {ar:'3',  en:'3'},
+  'imp1-lbl':    {ar:'ميداليات ذهبية',              en:'Gold Medals'},
+  'imp2-lbl':    {ar:'مبادرات مجتمعية',             en:'Community Initiatives'},
+  'imp3-lbl':    {ar:'إنجازات علمية',               en:'Academic Achievements'},
+  'imp4-lbl':    {ar:'مشاركات قطر والخليج',         en:'Qatar & Gulf Participations'},
+  'explore-label':{ar:'استكشف الموقع · Explore',  en:'Explore the Site'},
+  'nc1-t':       {ar:'About Me',    en:'About Me'},
+  'nc1-d':       {ar:'القصة · القيم · الاهتمامات', en:'Story · Values · Interests'},
+  'nc2-t':       {ar:'Achievements', en:'Achievements'},
+  'nc2-d':       {ar:'الإنجازات · الشهادات · المسيرة', en:'Honors · Certificates · Journey'},
+  'nc3-t':       {ar:'Projects',    en:'Projects'},
+  'nc3-d':       {ar:'المبادرات · المشاريع الرقمية', en:'Initiatives · Digital Projects'},
+  'nc4-t':       {ar:'Impact',      en:'Impact'},
+  'nc4-d':       {ar:'القيادة · الأثر المجتمعي', en:'Leadership · Community Impact'},
+  'home-quote':  {ar:'أؤمن أن التقنية ليست مجرد أدوات، بل وسيلة لصناعة أثر حقيقي في المجتمع.', en:'I believe technology is not just tools — it\'s a means to create real impact in society.'},
+
+  // ABOUT
+  'ab-story-label': {ar:'My Story · قصتي',             en:'My Story'},
+  'ab-p1': {ar:'أنا <strong>المياسة الكعبي</strong>، طالبة في مدرسة قطر التقنية الثانوية للبنات، وشغفي الحقيقي يكمن في المجالات التي تجمع بين التقنية والإبداع وصناعة الأثر.', en:'I am <strong>Almayasa Alkaabi</strong>, a student at Qatar Technical Secondary School for Girls. My true passion lies at the intersection of technology, creativity, and meaningful impact.'},
+  'ab-p2': {ar:'بدأ اهتمامي مبكرًا في التصميم والروبوتات والذكاء الاصطناعي، ومع الوقت تحوّل هذا الاهتمام إلى مبادرات ومشاريع أسعى من خلالها لإحداث تأثير إيجابي داخل المجتمع المدرسي وخارجه.', en:'My interest in design, robotics, and AI started early. Over time, this passion evolved into real initiatives and projects aimed at creating positive change within and beyond my school community.'},
+  'ab-p3': {ar:'أؤمن أن التقنية ليست مجرد أدوات، بل وسيلة لصناعة التغيير وتمكين الآخرين، لذلك أحرص على تطوير مهاراتي في الابتكار والقيادة والمبادرات المجتمعية.', en:'I believe technology is a vehicle for change and empowerment, which is why I continuously work on developing my skills in innovation, leadership, and community initiatives.'},
+  'ab-p4': {ar:'طموحي أن أصبح مهندسة كمبيوتر أساهم في تطوير حلول تقنية مبتكرة تخدم بلادي وتسهم في بناء مستقبل أكثر تطورًا واستدامة.', en:'My ambition is to become a computer engineer who develops innovative technology solutions that serve my country and contribute to a more advanced, sustainable future.'},
+  'ab-skills-lbl': {ar:'Core Expertise · خبراتي الأساسية', en:'Core Expertise'},
+  'ab-sk1': {ar:'التصميم · Design',           en:'Design'},
+  'ab-sk2': {ar:'الروبوتات · Robotics',        en:'Robotics'},
+  'ab-sk3': {ar:'البرمجة · Programming',       en:'Programming'},
+  'ab-sk4': {ar:'الذكاء الاصطناعي · AI',       en:'Artificial Intelligence · AI'},
+  'ab-sk5': {ar:'الإلقاء · Public Speaking',   en:'Public Speaking'},
+  'ab-sk6': {ar:'تنظيم الفعاليات · Organizing',en:'Events Organizing'},
+  'ab-info-t':  {ar:'Personal Info · معلومات شخصية', en:'Personal Info'},
+  'ab-info-k1': {ar:'الاسم',      en:'Name (AR)'},
+  'ab-info-v1': {ar:'المياسة الكعبي', en:'المياسة الكعبي'},
+  'ab-info-k2': {ar:'Name',       en:'Name'},
+  'ab-info-v2': {ar:'Almayasa Alkaabi', en:'Almayasa Alkaabi'},
+  'ab-info-k3': {ar:'المدرسة',    en:'School'},
+  'ab-info-v3': {ar:'Qatar Technical School', en:'Qatar Technical School'},
+  'ab-info-k4': {ar:'التخصص',    en:'Major'},
+  'ab-info-v4': {ar:'IT · تكنولوجيا المعلومات', en:'Information Technology'},
+  'ab-info-k5': {ar:'الدولة',     en:'Country'},
+  'ab-info-v5': {ar:'🇶🇦 قطر',    en:'🇶🇦 Qatar'},
+  'ab-hob-t':   {ar:'Hobbies · الهوايات', en:'Hobbies'},
+
+  // VISION
+  'vm-label':   {ar:'Vision & Mission · رؤيتي ورسالتي', en:'Vision & Mission'},
+  'vm-v-sub':   {ar:'🎯 | VISION · رؤيتي',   en:'🎯 | VISION'},
+  'vm-v-text':  {ar:'أن أكون شخصية مؤثرة تسهم في تمكين الفتيات في مجالات التقنية، وأن أصبح مهندسة كمبيوتر أطوّر حلولًا مبتكرة تخدم بلادي وتواكب تطورات المستقبل.', en:'To become an influential figure who empowers girls in the field of technology, and to be a computer engineer who develops innovative solutions that serve my country and keep pace with the future.'},
+  'vm-m-sub':   {ar:'💡 | MISSION · رسالتي',  en:'💡 | MISSION'},
+  'vm-m-text':  {ar:'تسخير معرفتي ومبادراتي لتمكين الفتيات علميًا وتقنيًا، وتعزيز حضورهن في المجالات التقنية بثقة وكفاءة، بما يسهم في خدمة الوطن وتنميته.', en:'To channel my knowledge and initiatives to empower girls academically and technically, strengthening their presence in technology fields with confidence and competence — in service of the nation.'},
+
+  // STRENGTHS
+  'str-label':  {ar:'Key Strengths · نقاط قوتي', en:'Key Strengths'},
+  'str1-t':     {ar:'تحمّل المسؤولية والانضباط', en:'Responsibility & Discipline'},
+  'str1-d':     {ar:'الالتزام بالمهام والعمل بروح المسؤولية لتحقيق أفضل النتائج.', en:'Commitment to tasks and working with a sense of responsibility to achieve the best results.'},
+  'str2-t':     {ar:'القيادة وتحفيز الفريق',     en:'Leadership & Team Motivation'},
+  'str2-d':     {ar:'القدرة على قيادة الفرق وتنظيم العمل الجماعي لتحقيق أهداف مشتركة.', en:'The ability to lead teams and organize collective efforts to achieve shared goals.'},
+  'str3-t':     {ar:'التفكير التحليلي والإبداعي', en:'Analytical & Creative Thinking'},
+  'str3-d':     {ar:'القدرة على تحليل المشكلات وإيجاد حلول مبتكرة تجمع بين التفكير المنطقي والإبداع.', en:'The ability to analyze problems and find innovative solutions that combine logical thinking with creativity.'},
+  'str4-t':     {ar:'إدارة الوقت وتنظيم الأولويات', en:'Time Management & Prioritization'},
+  'str4-d':     {ar:'القدرة على الموازنة بين الدراسة والمبادرات والمشاركات المختلفة.', en:'The ability to balance academics, initiatives, and various commitments simultaneously.'},
+  'str5-t':     {ar:'المبادرة وصناعة الفرص',     en:'Initiative & Opportunity Creation'},
+  'str5-d':     {ar:'السعي إلى تحويل الأفكار إلى مبادرات ومشاريع ذات أثر حقيقي.', en:'Turning ideas into impactful initiatives and real-world projects.'},
+  'str6-t':     {ar:'العمل تحت الضغط',           en:'Performing Under Pressure'},
+  'str6-d':     {ar:'القدرة على الحفاظ على الأداء الجيد في بيئات العمل السريعة أو أثناء المسابقات.', en:'Maintaining strong performance in fast-paced environments and competitive settings.'},
+
+  // PASSIONS
+  'tal-label':  {ar:'Passions & Interests · اهتماماتي وشغفي', en:'Passions & Interests'},
+  'tal1-t':     {ar:'التحدث أمام الجمهور', en:'Public Speaking'},
+  'tal1-d':     {ar:'الإلقاء والمشاركة في الأنشطة التي تتطلب التواصل مع الجمهور.', en:'Delivering speeches and participating in activities that require engaging with audiences.'},
+  'tal2-t':     {ar:'العزف على البيانو', en:'Playing Piano'},
+  'tal2-d':     {ar:'تنمية الحس الفني من خلال تعلم الموسيقى.', en:'Developing artistic sensibility through learning music.'},
+  'tal3-t':     {ar:'تلاوة القرآن والإنشاد', en:'Quran Recitation & Nasheed'},
+  'tal3-d':     {ar:'المشاركة في الأنشطة الصوتية الدينية.', en:'Participating in religious vocal and recitation activities.'},
+  'tal4-t':     {ar:'التصميم والإبداع الرقمي', en:'Digital Design & Creativity'},
+  'tal4-d':     {ar:'تصميم المحتوى الرقمي وبناء الهويات البصرية.', en:'Designing digital content and building visual brand identities.'},
+  'tal5-t':     {ar:'الابتكار والتقنية', en:'Innovation & Technology'},
+  'tal5-d':     {ar:'استكشاف التقنيات الجديدة ومتابعة التطورات في المجال التقني.', en:'Exploring new technologies and staying current with developments in the tech field.'},
+  'tal6-t':     {ar:'تنظيم الفعاليات والمبادرات', en:'Event & Initiative Organization'},
+  'tal6-d':     {ar:'الاستمتاع بتنظيم الأنشطة والمبادرات الطلابية.', en:'Enjoying the planning and execution of student activities and initiatives.'},
+
+  // ACHIEVEMENTS
+  'ach-label':  {ar:'Honors & Achievements · الإنجازات والتكريمات', en:'Honors & Achievements'},
+  'aw1-t':      {ar:'الميدالية الذهبية — مسابقة باحث',             en:'Gold Medal — Baheth Research Competition'},
+  'aw1-o':      {ar:'ثلاث نسخ متتالية · Baheth Competition — 3 Consecutive Editions', en:'3 Consecutive Editions · Baheth Competition'},
+  'aw1-d':      {ar:'إنجاز استثنائي بالفوز بالذهب ثلاث مرات متتالية.', en:'An exceptional achievement — winning gold three consecutive times.'},
+  'aw2-t':      {ar:'المركز الأول — مسابقة الإنشاد',               en:'1st Place — Nasheed Competition'},
+  'aw2-o':      {ar:'مستوى مدارس قطر · Nasheed Competition · Islamic Education Dept.', en:'All Qatar Schools Level · Islamic Education Dept.'},
+  'aw2-d':      {ar:'المركز الأول على مستوى جميع مدارس قطر بالتعاون مع قسم التربية الإسلامية.', en:'1st place across all Qatar schools in collaboration with the Islamic Education Department.'},
+  'aw3-t':      {ar:'المركز الثالث — مسابقات المهارات الخليجية',    en:'3rd Place — Gulf Skills Competition'},
+  'aw3-o':      {ar:'الدوحة · Gulf Skills — Autonomous Robotics',   en:'Doha · Gulf Skills — Autonomous Robotics'},
+  'aw3-d':      {ar:'المركز الثالث في فئة الروبوتات ذاتية الحركة في مسابقات المهارات الخليجية.', en:'3rd place in the Autonomous Robotics category at the Gulf Skills Competition.'},
+  'aw4-t':      {ar:'مسابقة نحو الاستدامة',        en:'Sustainability Competition'},
+  'aw4-o':      {ar:'Sustainability Competition',   en:'Sustainability Competition'},
+  'aw4-d':      {ar:'تصميم مجلة بيئية احترافية مكونة من 10 صفحات بأدوات رقمية حديثة.', en:'Designed a 10-page professional environmental magazine using modern digital tools.'},
+  'aw5-t':      {ar:'بطولة المدارس للروبوت — النسخة 16', en:'Schools Robotics Championship — Edition 16'},
+  'aw5-o':      {ar:'Schools Robotics Championship · Edition 16', en:'Schools Robotics Championship · Edition 16'},
+  'aw6-t':      {ar:'مسابقات تلاوة القرآن الكريم',  en:'Quran Recitation Competitions'},
+  'aw6-o':      {ar:'Quran Recitation Competitions · Two Consecutive Years', en:'Two Consecutive Years'},
+  'aw6-d':      {ar:'مشاركة لعامين متتاليين في مسابقات تلاوة القرآن الكريم.', en:'Participated in Quran recitation competitions for two consecutive years.'},
+
+  // CERTIFICATES
+  'cert-label': {ar:'Certifications & Development · الشهادات والتطور', en:'Certifications & Development'},
+  'cert1-t':    {ar:'الأمن السيبراني وإدارة المخاطر', en:'Cybersecurity & Risk Management'},
+  'cert1-d':    {ar:'شهادة معتمدة في أساسيات الأمن السيبراني وحماية الأنظمة والمعلومات الرقمية.', en:'Certified in cybersecurity fundamentals and digital systems/information protection.'},
+  'cert2-t':    {ar:'MOS — Microsoft Office Specialist', en:'MOS — Microsoft Office Specialist'},
+  'cert2-d':    {ar:'Word · PowerPoint · Excel<br>شهادة معتمدة من Microsoft.', en:'Word · PowerPoint · Excel<br>Microsoft Certified Specialist.'},
+  'cert3-t':    {ar:'دورات القيادة وتطوير الذات', en:'Leadership & Personal Development'},
+  'cert3-d':    {ar:'المشاركة في برامج تدريبية لتنمية المهارات القيادية والشخصية.', en:'Participation in training programs focused on leadership and personal growth skills.'},
+  'cert4-t':    {ar:'دورات في التقنية والابتكار', en:'Technology & Innovation Courses'},
+  'cert4-d':    {ar:'الاستمرار في المشاركة في الدورات التقنية لتعزيز المهارات الرقمية.', en:'Ongoing participation in technical courses to strengthen digital competencies.'},
+  'cert5-t':    {ar:'برامج التدريب الطلابي', en:'Student Training Programs'},
+  'cert5-d':    {ar:'المشاركة في ورش تدريبية ومبادرات تعليمية متنوعة.', en:'Participation in diverse training workshops and educational initiatives.'},
+
+  // JOURNEY
+  'jtl-label':  {ar:'My Journey · مسيرتي', en:'My Journey'},
+  'jtl1-y':     {ar:'2023',      en:'2023'},
+  'jtl1-t':     {ar:'بداية رحلتي في المسابقات التقنية', en:'Beginning of My Technical Journey'},
+  'jtl1-d':     {ar:'المشاركة الأولى في المسابقات العلمية والتقنية مثل الروبوتات والبحث العلمي.', en:'First participation in scientific and technical competitions such as robotics and research.'},
+  'jtl2-y':     {ar:'🥇 2023 – 2025', en:'🥇 2023 – 2025'},
+  'jtl2-t':     {ar:'الميدالية الذهبية — مسابقة باحث', en:'Gold Medal — Baheth Competition'},
+  'jtl2-d':     {ar:'تحقيق الميدالية الذهبية في مسابقة باحث لثلاث سنوات متتالية.', en:'Achieving the gold medal in Baheth Competition for three consecutive years.'},
+  'jtl3-y':     {ar:'2024',      en:'2024'},
+  'jtl3-t':     {ar:'بطولة المدارس للروبوت — النسخة 16', en:'Schools Robotics Championship — Edition 16'},
+  'jtl3-d':     {ar:'المشاركة في بطولة الروبوتات المدرسية واكتساب خبرة في مجال الروبوتات.', en:'Participating in the schools robotics championship and gaining hands-on robotics experience.'},
+  'jtl4-y':     {ar:'2024',      en:'2024'},
+  'jtl4-t':     {ar:'إطلاق العلامة التجارية — Sahra Threads', en:'Launching Brand — Sahra Threads'},
+  'jtl4-d':     {ar:'إطلاق مشروع ريادي في مجال الأزياء وإدارته بشكل مستقل من الفكرة إلى التنفيذ.', en:'Launching an entrepreneurial fashion project and managing it fully independently from idea to execution.'},
+  'jtl5-y':     {ar:'2025',      en:'2025'},
+  'jtl5-t':     {ar:'الانضمام إلى مدرسة قطر التقنية الثانوية للبنات', en:'Joining Qatar Technical Secondary School for Girls'},
+  'jtl5-d':     {ar:'بداية دراسة تخصص تكنولوجيا المعلومات وتطوير المهارات التقنية والقيادية.', en:'Beginning IT specialization studies and developing technical and leadership skills.'},
+  'jtl6-y':     {ar:'2025',      en:'2025'},
+  'jtl6-t':     {ar:'المركز الثالث — مسابقات المهارات الخليجية', en:'3rd Place — Gulf Skills Competition'},
+  'jtl6-d':     {ar:'تحقيق المركز الثالث في فئة الروبوتات ضمن منافسات المهارات الخليجية.', en:'Achieving 3rd place in the Autonomous Robotics category at the Gulf Skills Competition.'},
+  'jtl7-y':     {ar:'2025 – 2026', en:'2025 – 2026'},
+  'jtl7-t':     {ar:'تطوير مشاريع رقمية تعليمية ومجتمعية', en:'Developing Educational & Community Digital Projects'},
+  'jtl7-d':     {ar:'تصميم وتنفيذ مشاريع رقمية مثل المواقع التعليمية والمنصات الرقمية.', en:'Designing and building digital projects including educational websites and digital platforms.'},
+  'jtl8-y':     {ar:'2026',      en:'2026'},
+  'jtl8-t':     {ar:'إطلاق مبادرة رمضان بركة وعطاء', en:'Launching Ramadan Blessings Initiative'},
+  'jtl8-d':     {ar:'مبادرة إنسانية لتعزيز ثقافة العطاء والعمل التطوعي خلال شهر رمضان.', en:'A humanitarian initiative to promote a culture of giving and volunteerism during Ramadan.'},
+  'jtl9-y':     {ar:'+2026',     en:'2026+'},
+  'jtl9-t':     {ar:'طموح نحو هندسة الكمبيوتر والابتكار التقني', en:'Ambition: Computer Engineering & Tech Innovation'},
+  'jtl9-d':     {ar:'الاستمرار في تطوير المشاريع التقنية والمبادرات المجتمعية.', en:'Continuing to develop technical projects and community initiatives.'},
+
+  // PROJECTS
+  'proj-init-label':   {ar:'Initiatives & Projects · مبادراتي ومشاريعي', en:'Initiatives & Projects'},
+  'proj1-t':    {ar:'مبادرة رمضان بركة وعطاء', en:'Ramadan Blessings Initiative'},
+  'proj1-te':   {ar:'Ramadan Blessings Initiative', en:'Ramadan Blessings Initiative'},
+  'proj1-d':    {ar:'مبادرة إنسانية أطلقتها خلال شهر رمضان لتعزيز قيم العطاء والمسؤولية المجتمعية، وامتد أثرها خارج الدولة. تم تنفيذ أكثر من خمسة أنشطة تطوعية متكاملة شملت تجهيز وجبات إفطار صائم وتنظيم أعمال خيرية أسبوعية.', en:'A humanitarian initiative launched during Ramadan to promote values of giving and social responsibility, with impact reaching beyond Qatar. Over five integrated volunteer activities were implemented, including preparing iftar meals and organizing weekly charity work.'},
+  'proj1-stat': {ar:'5+ أنشطة تطوعية', en:'5+ Volunteer Activities'},
+  'proj1-role': {ar:'دوري: المبادِرة، قائدة الفريق، التخطيط والتنفيذ', en:'Role: Founder · Team Leader · Planning & Execution'},
+  'proj2-t':    {ar:'ورشة التصميم الإبداعي', en:'Creative Design Workshop'},
+  'proj2-te':   {ar:'Creative Design Workshop', en:'Creative Design Workshop'},
+  'proj2-d':    {ar:'ورشة تدريبية هدفت إلى تطوير مهارات التصميم الرقمي واستخدام الأدوات الحديثة في إعداد المحتوى التعليمي.', en:'A training workshop aimed at developing digital design skills and using modern tools for preparing educational content.'},
+  'proj2-role': {ar:'دوري: المصممة والمدربة', en:'Role: Designer & Trainer'},
+  'proj3-t':    {ar:'العلامة التجارية للملابس', en:'Fashion Clothing Brand'},
+  'proj3-te':   {ar:'Fashion Clothing Brand · Sahra Threads', en:'Fashion Clothing Brand · Sahra Threads'},
+  'proj3-d':    {ar:'مشروع ريادي يهدف إلى تقديم تصاميم ملابس مميزة تستهدف فئات عمرية متعددة، تم تطويره وإدارته بشكل مستقل.', en:'An entrepreneurial project offering distinctive clothing designs for various age groups, fully developed and managed independently.'},
+  'proj3-role': {ar:'دوري: المؤسسة والمديرة الإبداعية', en:'Role: Founder & Creative Director'},
+
+  // DIGITAL PROJECTS
+  'dig-label':  {ar:'Digital Projects · مشاريعي الرقمية', en:'Digital Projects'},
+  'dig-sub':    {ar:'أعمل على تطوير مشاريع رقمية تهدف إلى توظيف التقنية في التعليم وخدمة المجتمع وبناء حلول مبتكرة.', en:'I develop digital projects aimed at leveraging technology in education, community service, and building innovative solutions.'},
+  'dig1-t':     {ar:'زاد رمضان', en:'Zad Ramadan'},
+  'dig1-te':    {ar:'Zad Ramadan · Digital Platform', en:'Zad Ramadan · Digital Platform'},
+  'dig1-d':     {ar:'موقع رقمي يهدف إلى مساعدة المستخدمين على استثمار العشر الأواخر من رمضان من خلال تقديم محتوى إيماني وتذكيرات بالأعمال الصالحة وتنظيم المبادرات التطوعية.', en:'A digital platform helping users make the most of the last ten days of Ramadan through faith-based content, daily reminders for good deeds, and organizing volunteer initiatives.'},
+  'dig1-goal-hd':{ar:'أهداف الموقع', en:'Platform Goals'},
+  'dig1-g1':    {ar:'مساعدة المستخدمين على اغتنام العشر الأواخر من رمضان بالأعمال الصالحة', en:'Help users make the most of the last ten days of Ramadan through good deeds'},
+  'dig1-g2':    {ar:'تقديم محتوى إيماني وتذكيرات يومية تعزز القرب من الله', en:'Provide faith-based content and daily reminders to strengthen closeness to God'},
+  'dig1-g3':    {ar:'تنظيم المبادرات التطوعية وتشجيع المشاركة المجتمعية', en:'Organize volunteer initiatives and encourage community participation'},
+  'dig1-g4':    {ar:'توظيف التقنية في نشر الخير وتسهيل الوصول إلى الأعمال الخيرية', en:'Use technology to spread goodness and simplify access to charitable activities'},
+  'dig1-role':  {ar:'الدور: المصممة والمطورة — بناء كامل للموقع من الفكرة حتى التنفيذ', en:'Role: Designer & Developer — Full build from concept to launch'},
+  'dig2-t':     {ar:'منصة تعليمية تفاعلية', en:'Interactive Learning Platform'},
+  'dig2-te':    {ar:'Interactive Learning Platform · Educational Web Tool', en:'Interactive Learning Platform · Educational Web Tool'},
+  'dig2-d':     {ar:'منصة تعليمية رقمية صممتها لتقديم تجربة تعلم تفاعلية للطالبات من خلال أنشطة متنوعة مثل الاختبارات القصيرة والألعاب التعليمية وأنظمة التحدي المشابهة لأسلوب Kahoot، بهدف جعل المراجعة الدراسية أكثر تشويقًا وتحفيزًا.', en:'A digital educational platform I designed to deliver an interactive learning experience for students through quizzes, educational games, and Kahoot-style challenge systems — making study review more engaging and motivating.'},
+  'dig2-goal-hd':{ar:'تركّز المنصة على', en:'Platform Focus'},
+  'dig2-g1':    {ar:'تقديم أسئلة تفاعلية بأساليب متعددة', en:'Delivering interactive questions through multiple formats'},
+  'dig2-g2':    {ar:'استخدام أسلوب الألعاب في التعلم (Gamification)', en:'Applying Gamification in the learning experience'},
+  'dig2-g3':    {ar:'تحفيز الطالبات على المشاركة والمنافسة التعليمية', en:'Motivating students to participate and compete academically'},
+  'dig2-g4':    {ar:'تعزيز الفهم بطريقة ممتعة وسهلة', en:'Reinforcing comprehension in a fun and accessible way'},
+  'dig2-role':  {ar:'الدور: تصميم الفكرة — تطوير المنصة — إعداد المحتوى التعليمي', en:'Role: Concept Design — Platform Development — Educational Content'},
+  'dig3-t':     {ar:'الموقع الشخصي — البورتفوليو', en:'Personal Portfolio Website'},
+  'dig3-te':    {ar:'Personal Portfolio Website', en:'Personal Portfolio Website'},
+  'dig3-d':     {ar:'موقع رقمي قمت بتصميمه وتطويره لعرض رحلتي في التعلم والإنجازات والمبادرات التي شاركت فيها، بالإضافة إلى توثيق مشاريعي التقنية وتجربتي في ريادة الأعمال والعمل المجتمعي.', en:'A digital website I designed and developed to showcase my learning journey, achievements, and initiatives — along with documenting my technical projects, entrepreneurial experience, and community work.'},
+  'dig3-goal-hd':{ar:'يهدف الموقع إلى', en:'Site Goals'},
+  'dig3-g1':    {ar:'تقديم صورة شاملة عن مسيرتي الأكاديمية والقيادية', en:'Presenting a comprehensive picture of my academic and leadership journey'},
+  'dig3-g2':    {ar:'عرض المبادرات والمشاريع التي قمت بها', en:'Showcasing the initiatives and projects I have undertaken'},
+  'dig3-g3':    {ar:'توثيق الإنجازات والأنشطة المجتمعية', en:'Documenting achievements and community activities'},
+  'dig3-g4':    {ar:'بناء هوية رقمية تعكس اهتماماتي وطموحاتي في مجال التقنية', en:'Building a digital identity that reflects my interests and ambitions in technology'},
+  'dig3-role':  {ar:'الدور: تصميم الفكرة — تطوير الموقع — تنظيم المحتوى', en:'Role: Concept Design — Website Development — Content Organization'},
+
+  // ENTREPRENEURIAL
+  'ent-label':  {ar:'المشروع الريادي · Entrepreneurial Journey', en:'Entrepreneurial Journey'},
+  'ent-p':      {ar:'أطلقت علامة تجارية للملابس تستهدف فئات عمرية متعددة، وتقدّم تصاميم تجمع بين الهوية العصرية والطابع الإبداعي.<br><br>توليّت إدارة المشروع بشكل كامل، من تطوير الهوية البصرية وتصميم المنتجات والتخطيط للتسويق، وصولًا إلى التواصل مع العملاء وبناء الثقة معهم.', en:'I launched a clothing brand targeting multiple age groups, offering designs that blend a contemporary identity with a creative character.<br><br>I managed the entire project independently — from developing the visual identity and designing products, to planning marketing and building customer relationships.'},
+  'ent-tag':    {ar:'الريادة لا ترتبط بالعمر · Entrepreneurship Has No Age', en:'Entrepreneurship Has No Age'},
+  'ent-learn-lbl':{ar:'ما تعلّمته من التجربة · Key Learnings', en:'Key Learnings'},
+  'ent-kl1':    {ar:'إدارة الوقت والمسؤوليات', en:'Time Management'},
+  'ent-kl2':    {ar:'التخطيط المالي وتنظيم الموارد', en:'Financial Planning'},
+  'ent-kl3':    {ar:'التواصل الاحترافي وبناء العلاقات', en:'Professional Communication'},
+  'ent-kl4':    {ar:'اتخاذ القرار وتحمّل النتائج', en:'Decision Making'},
+  'ent-kl5':    {ar:'تطوير الهوية البصرية', en:'Brand Identity Development'},
+  'ent-proj-k1':{ar:'المشروع',  en:'Project'},
+  'ent-proj-k2':{ar:'النوع',    en:'Type'},
+  'ent-proj-v2':{ar:'Fashion Brand', en:'Fashion Brand'},
+  'ent-proj-k3':{ar:'الإدارة',  en:'Management'},
+  'ent-proj-v3':{ar:'ذاتية بالكامل', en:'Fully self-managed'},
+  'ent-proj-k4':{ar:'النتيجة',  en:'Result'},
+  'ent-proj-v4':{ar:'✓ نجاح ملموس', en:'✓ Tangible success'},
+  'ent-ig-lbl': {ar:'View on Instagram', en:'View on Instagram'},
+  'ent-ig-sub': {ar:'@sahrathreads',     en:'@sahrathreads'},
+
+  // FUTURE
+  'up-label':   {ar:'Future Initiatives · المبادرات القادمة', en:'Future Initiatives'},
+  'up1-t':      {ar:'ورش التصميم الرقمي المتقدم',   en:'Advanced Digital Design Workshops'},
+  'up1-te':     {ar:'Advanced Digital Design',       en:'Advanced Digital Design'},
+  'up1-d':      {ar:'تنظيم ورش تدريبية للطالبات حول بناء الهوية البصرية وتصميم المحتوى الرقمي.', en:'Organizing training workshops for students on visual identity building and digital content design.'},
+  'up2-t':      {ar:'برنامج أساسيات الذكاء الاصطناعي', en:'AI Fundamentals Program'},
+  'up2-te':     {ar:'AI Fundamentals Program',       en:'AI Fundamentals Program'},
+  'up2-d':      {ar:'برنامج تعليمي مبسط يعرّف الطالبات بمفاهيم الذكاء الاصطناعي وتطبيقاته.', en:'A simplified educational program introducing students to AI concepts and applications.'},
+  'up3-t':      {ar:'مبادرات لتعزيز الثقافة التقنية في المدارس', en:'Tech Culture in Schools Initiative'},
+  'up3-te':     {ar:'Tech Culture in Schools',       en:'Tech Culture in Schools'},
+  'up3-d':      {ar:'تنظيم أنشطة وفعاليات تهدف إلى نشر ثقافة الابتكار والتقنية بين الطالبات.', en:'Organizing activities and events to spread a culture of innovation and technology among students.'},
+  'up-tag':     {ar:'⏱ قادمة', en:'⏱ Coming Soon'},
+
+  // IMPACT
+  'lead-label': {ar:'Leadership & Impact · القيادة والأثر', en:'Leadership & Impact'},
+  'lead1-t':    {ar:'قيادة المبادرات الطلابية',          en:'Student Initiative Leadership'},
+  'lead1-sub':  {ar:'Initiatives Leader',                 en:'Initiatives Leader'},
+  'lead1-d':    {ar:'قيادة وتنظيم عدد من المبادرات التي تهدف إلى تعزيز التطوع وخدمة المجتمع.', en:'Leading and organizing initiatives aimed at promoting volunteerism and community service.'},
+  'lead2-t':    {ar:'تنظيم الفعاليات المدرسية',           en:'School Events Organization'},
+  'lead2-sub':  {ar:'Events Organizer',                   en:'Events Organizer'},
+  'lead2-d':    {ar:'المساهمة في تنظيم الفعاليات والأنشطة التعليمية داخل المدرسة.', en:'Contributing to the organization of educational events and activities within the school.'},
+  'lead3-t':    {ar:'نشر ثقافة التقنية والابتكار',        en:'Spreading Tech & Innovation Culture'},
+  'lead3-sub':  {ar:'Tech Culture Advocate',              en:'Tech Culture Advocate'},
+  'lead3-d':    {ar:'تشجيع الطالبات على اكتشاف قدراتهن في مجالات التقنية والإبداع.', en:'Encouraging students to discover their potential in technology and creative fields.'},
+  'lead4-t':    {ar:'المشاركة في الأنشطة المجتمعية',     en:'Community Activity Participation'},
+  'lead4-sub':  {ar:'Community Volunteer',                en:'Community Volunteer'},
+  'lead4-d':    {ar:'المشاركة في فعاليات تطوعية ومجتمعية تعزز روح المسؤولية المجتمعية.', en:'Participating in volunteer and community events that foster a sense of social responsibility.'},
+  'lead5-t':    {ar:'تمكين الطالبات في المجالات التقنية', en:'Empowering Girls in Tech'},
+  'lead5-sub':  {ar:'Girls in Tech',                      en:'Girls in Tech'},
+  'lead5-d':    {ar:'المساهمة في دعم وتشجيع الفتيات على دخول مجالات التقنية والابتكار.', en:'Contributing to supporting and encouraging girls to enter technology and innovation fields.'},
+
+  // COMMUNITY IMPACT
+  'comm-label': {ar:'Community Impact · الأثر المجتمعي', en:'Community Impact'},
+  'comm-tl1-t': {ar:'التطوع في معرض الكتاب', en:'Volunteering at the Book Fair'},
+  'comm-tl1-d': {ar:'مركز قطر التطوعي · Qatar Volunteer Center · Book Fair', en:'Qatar Volunteer Center · Book Fair'},
+  'comm-tl2-t': {ar:'المشاركة في فعاليات الرازجي — درب الساعي', en:'Participating in Al-Razgi Events — Darb Al-Saei'},
+  'comm-tl2-d': {ar:'Al-Razgi Events · Darb Al-Saei', en:'Al-Razgi Events · Darb Al-Saei'},
+  'comm-tl3-t': {ar:'تنظيم اليوم الرياضي داخل المدرسة', en:'Organizing the School Sports Day'},
+  'comm-tl3-d': {ar:'School Sports Day Organizer', en:'School Sports Day Organizer'},
+  'comm-tl4-t': {ar:'تنظيم معرض البحث والابتكار والاستدامة', en:'Organizing the Research, Innovation & Sustainability Exhibition'},
+  'comm-tl4-d': {ar:'Research, Innovation & Sustainability Exhibition', en:'Research, Innovation & Sustainability Exhibition'},
+  'comm-quote': {ar:'"أؤمن بأن العمل التطوعي جزء أساسي من بناء الشخصية القيادية."', en:'"I believe that volunteer work is an essential part of building a leadership character."'},
+  'impact-quote':{ar:'أسعى لأن أكون جزءًا من الجيل الذي يصنع المستقبل بالتقنية والابتكار ويترك أثرًا إيجابيًا في المجتمع.', en:'I strive to be part of the generation that builds the future through technology and innovation, leaving a positive impact on society.'},
+
+  // CONTACT
+  'con-label':  {ar:'Get In Touch · تواصل معي', en:'Get In Touch'},
+  'con-intro':  {ar:'يسعدني التواصل معكم للتعاون أو تبادل المعرفة أو أي فرصة.<br>Always open to new ideas and collaborations.', en:'I\'m happy to connect for collaboration, knowledge exchange, or any opportunity.<br>Always open to new ideas and collaborations.'},
+  'con-email-lbl':{ar:'Email · البريد',   en:'Email'},
+  'con-wa-lbl': {ar:'WhatsApp · واتساب', en:'WhatsApp'},
+  'con-f-name': {ar:'Your Name',   en:'Your Name'},
+  'con-f-name-ph':{ar:'ما اسمك؟', en:'What is your name?'},
+  'con-f-email-ph':{ar:'your@email.com', en:'your@email.com'},
+  'con-f-msg':  {ar:'Message',      en:'Message'},
+  'con-f-msg-ph':{ar:'اكتبي رسالتك...', en:'Write your message...'},
+  'con-btn':    {ar:'← إرسال',     en:'Send →'},
+
+  // FOOTER
+  'footer-copy': {ar:'2026 · Made with passion ✦', en:'2026 · Made with passion ✦'},
+};
+
+// ── Map each key to the DOM element(s) ──
+function applyLang(lang) {
+  var d = document;
+  function t(key){ return T[key] ? T[key][lang] : ''; }
+  function set(sel, key, useInner) {
+    d.querySelectorAll(sel).forEach(function(el){
+      if(useInner) el.innerHTML = t(key); else el.textContent = t(key);
+    });
+  }
+  function setFirst(sel, key, useInner) {
+    var el = d.querySelector(sel);
+    if(el){ if(useInner) el.innerHTML = t(key); else el.textContent = t(key); }
+  }
+
+  // helper: nth element matching selector
+  function nth(sel, n, key, inner) {
+    var els = d.querySelectorAll(sel);
+    if(els[n]){ if(inner) els[n].innerHTML = t(key); else els[n].textContent = t(key); }
+  }
+
+  // NAV
+  var nl = d.querySelectorAll('.nav-link');
+  if(nl[0]) nl[0].textContent = t('nav-home');
+  if(nl[1]) nl[1].textContent = t('nav-about');
+  if(nl[2]) nl[2].textContent = t('nav-ach');
+  if(nl[3]) nl[3].textContent = t('nav-proj');
+  if(nl[4]) nl[4].textContent = t('nav-impact');
+  if(nl[5]) nl[5].textContent = t('nav-contact');
+  var ml = d.querySelectorAll('.mob-link');
+  if(ml[0]) ml[0].textContent = t('mob-home');
+  if(ml[1]) ml[1].textContent = t('mob-about');
+  if(ml[2]) ml[2].textContent = t('mob-ach');
+  if(ml[3]) ml[3].textContent = t('mob-proj');
+  if(ml[4]) ml[4].textContent = t('mob-impact');
+  if(ml[5]) ml[5].textContent = t('mob-contact');
+
+  // HERO
+  setFirst('.hero-badge',   'hero-badge');
+  var tags = d.querySelectorAll('.htag');
+  if(tags[0]) tags[0].textContent = t('hero-tag1');
+  if(tags[1]) tags[1].textContent = t('hero-tag2');
+  if(tags[2]) tags[2].textContent = t('hero-tag3');
+  setFirst('.hname-ar',     'hero-name');
+  setFirst('.hname-en',     'hero-name-en');
+  setFirst('.hspec',        'hero-spec');
+  setFirst('.hschool',      'hero-school');
+  setFirst('.hero-tagline', 'hero-tagline');
+  setFirst('.note-banner p','hero-note', true);
+  var hbtns = d.querySelectorAll('#page-home .hero-btns a');
+  if(hbtns[0]) hbtns[0].textContent = t('hero-btn1');
+  if(hbtns[1]) hbtns[1].textContent = t('hero-btn2');
+
+  // HOME section labels & cards
+  var shlabels = d.querySelectorAll('#page-home .sh-label');
+  if(shlabels[0]) shlabels[0].innerHTML = lang==='ar' ? 'استكشف الموقع <span class="ar-label">· Explore</span>' : 'Explore the Site';
+
+  var imps = d.querySelectorAll('#page-home .impact-lbl');
+  if(imps[0]) imps[0].innerHTML = t('imp1-lbl') + '<br><span>' + (lang==='ar'?'Gold Medals':'Gold Medals') + '</span>';
+  if(imps[1]) imps[1].innerHTML = t('imp2-lbl') + '<br><span>' + (lang==='ar'?'Initiatives':'مبادرات') + '</span>';
+  if(imps[2]) imps[2].innerHTML = t('imp3-lbl') + '<br><span>' + (lang==='ar'?'Achievements':'إنجازات') + '</span>';
+  if(imps[3]) imps[3].innerHTML = t('imp4-lbl') + '<br><span>' + (lang==='ar'?'Qatar & Gulf':'قطر والخليج') + '</span>';
+
+  var ncs = d.querySelectorAll('#page-home .nc-t');
+  var ncds = d.querySelectorAll('#page-home .nc-d');
+  var nckeys = ['nc1-t','nc2-t','nc3-t','nc4-t'];
+  var ncdkeys = ['nc1-d','nc2-d','nc3-d','nc4-d'];
+  ncs.forEach(function(el,i){ if(nckeys[i]) el.textContent = t(nckeys[i]); });
+  ncds.forEach(function(el,i){ if(ncdkeys[i]) el.textContent = t(ncdkeys[i]); });
+  setFirst('#page-home .qb-text', 'home-quote');
+
+  // ABOUT
+  var abpages = d.querySelectorAll('#page-about .sh-label');
+  if(abpages[0]) abpages[0].innerHTML = lang==='ar' ? 'My Story <span class="ar-label">· قصتي</span>' : 'My Story';
+  if(abpages[1]) abpages[1].innerHTML = lang==='ar' ? 'Vision &amp; Mission <span class="ar-label">· رؤيتي ورسالتي</span>' : 'Vision &amp; Mission';
+  if(abpages[2]) abpages[2].innerHTML = lang==='ar' ? 'Key Strengths <span class="ar-label">· نقاط قوتي</span>' : 'Key Strengths';
+  if(abpages[3]) abpages[3].innerHTML = lang==='ar' ? 'Passions &amp; Interests <span class="ar-label">· اهتماماتي وشغفي</span>' : 'Passions &amp; Interests';
+
+  var abps = d.querySelectorAll('#page-about .about-bio p');
+  if(abps[0]) abps[0].innerHTML = t('ab-p1');
+  if(abps[1]) abps[1].innerHTML = t('ab-p2');
+  if(abps[2]) abps[2].innerHTML = t('ab-p3');
+  if(abps[3]) abps[3].innerHTML = t('ab-p4');
+
+  var sks = d.querySelectorAll('#page-about .sk-name');
+  ['ab-sk1','ab-sk2','ab-sk3','ab-sk4','ab-sk5','ab-sk6'].forEach(function(k,i){ if(sks[i]) sks[i].textContent = t(k); });
+
+  var ibts = d.querySelectorAll('#page-about .ib-t');
+  if(ibts[0]) ibts[0].innerHTML = (lang==='ar'?'Personal Info · معلومات شخصية':'Personal Info');
+  if(ibts[1]) ibts[1].innerHTML = (lang==='ar'?'Hobbies · الهوايات':'Hobbies');
+
+  var ibks = d.querySelectorAll('#page-about .ib-k');
+  var ibvs = d.querySelectorAll('#page-about .ib-v');
+  ['ab-info-k1','ab-info-k2','ab-info-k3','ab-info-k4','ab-info-k5'].forEach(function(k,i){ if(ibks[i]) ibks[i].textContent = t(k); });
+  ['ab-info-v1','ab-info-v2','ab-info-v3','ab-info-v4','ab-info-v5'].forEach(function(k,i){ if(ibvs[i]) ibvs[i].textContent = t(k); });
+
+  d.querySelector('.vm-card:nth-child(1) .vm-sub') && (d.querySelector('.vm-card:nth-child(1) .vm-sub').textContent = t('vm-v-sub'));
+  d.querySelector('.vm-card:nth-child(1) .vm-text') && (d.querySelector('.vm-card:nth-child(1) .vm-text').textContent = t('vm-v-text'));
+  d.querySelector('.vm-card:nth-child(2) .vm-sub') && (d.querySelector('.vm-card:nth-child(2) .vm-sub').textContent = t('vm-m-sub'));
+  d.querySelector('.vm-card:nth-child(2) .vm-text') && (d.querySelector('.vm-card:nth-child(2) .vm-text').textContent = t('vm-m-text'));
+
+  var strs = d.querySelectorAll('#page-about .str-card');
+  [['str1-t','str1-d'],['str2-t','str2-d'],['str3-t','str3-d'],['str4-t','str4-d'],['str5-t','str5-d'],['str6-t','str6-d']].forEach(function(pair,i){
+    if(!strs[i]) return;
+    var tt = strs[i].querySelector('.str-t'), td = strs[i].querySelector('.str-d');
+    if(tt) tt.textContent = t(pair[0]);
+    if(td) td.textContent = t(pair[1]);
+  });
+
+  var tals = d.querySelectorAll('#page-about .tal-card');
+  [['tal1-t','tal1-d'],['tal2-t','tal2-d'],['tal3-t','tal3-d'],['tal4-t','tal4-d'],['tal5-t','tal5-d'],['tal6-t','tal6-d']].forEach(function(pair,i){
+    if(!tals[i]) return;
+    var tt = tals[i].querySelector('.tal-t'), td = tals[i].querySelector('.tal-d');
+    if(tt) tt.textContent = t(pair[0]);
+    if(td) td.textContent = t(pair[1]);
+  });
+
+  // ACHIEVEMENTS
+  var achLabels = d.querySelectorAll('#page-achievements .sh-label');
+  if(achLabels[0]) achLabels[0].innerHTML = lang==='ar' ? 'Honors &amp; Achievements <span class="ar-label">· الإنجازات والتكريمات</span>' : 'Honors &amp; Achievements';
+  if(achLabels[1]) achLabels[1].innerHTML = lang==='ar' ? 'Certifications &amp; Development <span class="ar-label">· الشهادات والتطور</span>' : 'Certifications &amp; Development';
+  if(achLabels[2]) achLabels[2].innerHTML = lang==='ar' ? 'My Journey <span class="ar-label">· مسيرتي</span>' : 'My Journey';
+
+  var aws = d.querySelectorAll('#page-achievements .aw-card');
+  [['aw1-t','aw1-o','aw1-d'],['aw2-t','aw2-o','aw2-d'],['aw3-t','aw3-o','aw3-d'],['aw4-t','aw4-o','aw4-d'],['aw5-t','aw5-o'],['aw6-t','aw6-o','aw6-d']].forEach(function(keys,i){
+    if(!aws[i]) return;
+    var tt = aws[i].querySelector('.aw-t'), to = aws[i].querySelector('.aw-o'), td = aws[i].querySelector('.aw-d');
+    if(tt) tt.textContent = t(keys[0]);
+    if(to) to.textContent = t(keys[1]);
+    if(td && keys[2]) td.textContent = t(keys[2]);
+  });
+
+  var certs = d.querySelectorAll('#page-achievements .cert-card');
+  [['cert1-t','cert1-d'],['cert2-t','cert2-d'],['cert3-t','cert3-d'],['cert4-t','cert4-d'],['cert5-t','cert5-d']].forEach(function(pair,i){
+    if(!certs[i]) return;
+    var tt = certs[i].querySelector('.cert-t'), td = certs[i].querySelector('.cert-d');
+    if(tt) tt.textContent = t(pair[0]);
+    if(td) td.innerHTML = t(pair[1]);
+  });
+
+  var jtls = d.querySelectorAll('#page-achievements .jtl-item');
+  [['jtl1-y','jtl1-t','jtl1-d'],['jtl2-y','jtl2-t','jtl2-d'],['jtl3-y','jtl3-t','jtl3-d'],['jtl4-y','jtl4-t','jtl4-d'],['jtl5-y','jtl5-t','jtl5-d'],['jtl6-y','jtl6-t','jtl6-d'],['jtl7-y','jtl7-t','jtl7-d'],['jtl8-y','jtl8-t','jtl8-d'],['jtl9-y','jtl9-t','jtl9-d']].forEach(function(keys,i){
+    if(!jtls[i]) return;
+    var ty = jtls[i].querySelector('.jtl-year'), tt = jtls[i].querySelector('.jtl-t'), td = jtls[i].querySelector('.jtl-d');
+    if(ty) ty.textContent = t(keys[0]);
+    if(tt) tt.textContent = t(keys[1]);
+    if(td) td.textContent = t(keys[2]);
+  });
+
+  // PROJECTS
+  var projLabels = d.querySelectorAll('#page-projects .sh-label');
+  if(projLabels[0]) projLabels[0].innerHTML = lang==='ar' ? 'Initiatives &amp; Projects <span class="ar-label">· مبادراتي ومشاريعي</span>' : 'Initiatives &amp; Projects';
+  if(projLabels[1]) projLabels[1].innerHTML = lang==='ar' ? 'Digital Projects <span class="ar-label">· مشاريعي الرقمية</span>' : 'Digital Projects';
+  if(projLabels[2]) projLabels[2].innerHTML = lang==='ar' ? 'المشروع الريادي <span class="ar-label">· Entrepreneurial Journey</span>' : 'Entrepreneurial Journey';
+  if(projLabels[3]) projLabels[3].innerHTML = lang==='ar' ? 'Future Initiatives <span class="ar-label">· المبادرات القادمة</span>' : 'Future Initiatives';
+
+  var digSub = d.querySelector('#page-projects .section-alt > .inner > p');
+  if(digSub) digSub.textContent = t('dig-sub');
+
+  var initCards = d.querySelectorAll('#page-projects .section:first-of-type .init-card');
+  [['proj1-t','proj1-te','proj1-d','proj1-role'],['proj2-t','proj2-te','proj2-d','proj2-role'],['proj3-t','proj3-te','proj3-d','proj3-role']].forEach(function(keys,i){
+    if(!initCards[i]) return;
+    var tt = initCards[i].querySelector('.in-t'), te = initCards[i].querySelector('.in-te'), td = initCards[i].querySelector('.in-d'), tr = initCards[i].querySelector('.in-role');
+    if(tt) tt.textContent = t(keys[0]);
+    if(te) te.textContent = t(keys[1]);
+    if(td) td.textContent = t(keys[2]);
+    if(tr) tr.textContent = t(keys[3]);
+  });
+  var ps = d.querySelectorAll('#page-projects .section:first-of-type .in-stat');
+  if(ps[0]) ps[0].innerHTML = ps[0].innerHTML.replace(/5\+.*/, '5+ ' + t('proj1-stat').replace('5+ ',''));
+
+  var digCards = d.querySelectorAll('#page-projects .section-alt .init-card');
+  [['dig1-t','dig1-te','dig1-d','dig1-goal-hd','dig1-g1','dig1-g2','dig1-g3','dig1-g4','dig1-role'],
+   ['dig2-t','dig2-te','dig2-d','dig2-goal-hd','dig2-g1','dig2-g2','dig2-g3','dig2-g4','dig2-role'],
+   ['dig3-t','dig3-te','dig3-d','dig3-goal-hd','dig3-g1','dig3-g2','dig3-g3','dig3-g4','dig3-role']
+  ].forEach(function(keys,i){
+    if(!digCards[i]) return;
+    var tt = digCards[i].querySelector('.in-t'), te = digCards[i].querySelector('.in-te'), td = digCards[i].querySelector('.in-d'), tr = digCards[i].querySelector('.in-role');
+    if(tt) tt.textContent = t(keys[0]);
+    if(te) te.textContent = t(keys[1]);
+    if(td) td.textContent = t(keys[2]);
+    if(tr) tr.textContent = t(keys[8]);
+    var goalHd = digCards[i].querySelector('p[style*="Cinzel"]');
+    if(goalHd) goalHd.textContent = t(keys[3]);
+    var lis = digCards[i].querySelectorAll('li');
+    [keys[4],keys[5],keys[6],keys[7]].forEach(function(k,j){ if(lis[j]){ lis[j].innerHTML = '<span style="color:var(--gold);font-size:.5rem;">✦</span>' + t(k); } });
+  });
+
+  var entBanner = d.querySelector('.ent-banner p');
+  if(entBanner) entBanner.innerHTML = t('ent-p');
+  var entTag = d.querySelector('.ent-banner .tagline');
+  if(entTag) entTag.textContent = t('ent-tag');
+  var entLblEl = d.querySelector('#page-projects .sk-lbl');
+  if(entLblEl) entLblEl.textContent = t('ent-learn-lbl');
+  var kls = d.querySelectorAll('.kl-t');
+  ['ent-kl1','ent-kl2','ent-kl3','ent-kl4','ent-kl5'].forEach(function(k,i){
+    if(kls[i]) kls[i].innerHTML = t(k) + ' <span class="kl-en">' + (lang==='ar'?'· '+T[k].en:'') + '</span>';
+  });
+  var pdks = d.querySelectorAll('.proj-detail .ib-k');
+  var pdvs = d.querySelectorAll('.proj-detail .ib-v');
+  ['ent-proj-k1','ent-proj-k2','ent-proj-k3','ent-proj-k4'].forEach(function(k,i){ if(pdks[i]) pdks[i].textContent = t(k); });
+  if(pdvs[1]) pdvs[1].textContent = t('ent-proj-v2');
+  if(pdvs[2]) pdvs[2].textContent = t('ent-proj-v3');
+  if(pdvs[3]) pdvs[3].innerHTML = t('ent-proj-v4');
+
+  var ups = d.querySelectorAll('#page-projects .up-card');
+  [['up1-t','up1-te','up1-d'],['up2-t','up2-te','up2-d'],['up3-t','up3-te','up3-d']].forEach(function(keys,i){
+    if(!ups[i]) return;
+    var tt = ups[i].querySelector('.up-t'), te = ups[i].querySelector('.up-te'), td = ups[i].querySelector('.up-d'), tg = ups[i].querySelector('.up-tag');
+    if(tt) tt.textContent = t(keys[0]);
+    if(te) te.textContent = t(keys[1]);
+    if(td) td.textContent = t(keys[2]);
+    if(tg) tg.textContent = t('up-tag');
+  });
+
+  // IMPACT
+  var impLabels = d.querySelectorAll('#page-impact .sh-label');
+  if(impLabels[0]) impLabels[0].innerHTML = lang==='ar' ? 'Leadership &amp; Impact <span class="ar-label">· القيادة والأثر</span>' : 'Leadership &amp; Impact';
+  if(impLabels[1]) impLabels[1].innerHTML = lang==='ar' ? 'Community Impact <span class="ar-label">· الأثر المجتمعي</span>' : 'Community Impact';
+
+  var leads = d.querySelectorAll('#page-impact .lead-card');
+  [['lead1-t','lead1-sub','lead1-d'],['lead2-t','lead2-sub','lead2-d'],['lead3-t','lead3-sub','lead3-d'],['lead4-t','lead4-sub','lead4-d'],['lead5-t','lead5-sub','lead5-d']].forEach(function(keys,i){
+    if(!leads[i]) return;
+    var tt = leads[i].querySelector('.lead-t'), ts = leads[i].querySelector('.lead-sub'), td = leads[i].querySelector('.lead-desc');
+    if(tt) tt.textContent = t(keys[0]);
+    if(ts) ts.textContent = t(keys[1]);
+    if(td) td.textContent = t(keys[2]);
+  });
+
+  var tls = d.querySelectorAll('#page-impact .tl-item');
+  [['comm-tl1-t','comm-tl1-d'],['comm-tl2-t','comm-tl2-d'],['comm-tl3-t','comm-tl3-d'],['comm-tl4-t','comm-tl4-d']].forEach(function(keys,i){
+    if(!tls[i]) return;
+    var tt = tls[i].querySelector('.tl-t'), td = tls[i].querySelector('.tl-d');
+    if(tt) tt.textContent = t(keys[0]);
+    if(td) td.textContent = t(keys[1]);
+  });
+  var vq = d.querySelector('.vol-quote p');
+  if(vq) vq.textContent = t('comm-quote');
+  var iq = d.querySelector('#page-impact .qb-text');
+  if(iq) iq.textContent = t('impact-quote');
+
+  // CONTACT
+  var conLabel = d.querySelector('#page-contact .sh-label');
+  if(conLabel) conLabel.innerHTML = lang==='ar' ? 'Get In Touch <span class="ar-label">· تواصل معي</span>' : 'Get In Touch';
+  var ci = d.querySelector('.c-intro');
+  if(ci) ci.innerHTML = t('con-intro');
+  var clbls = d.querySelectorAll('.c-lbl');
+  if(clbls[0]) clbls[0].textContent = t('con-email-lbl');
+  if(clbls[1]) clbls[1].textContent = t('con-wa-lbl');
+  var fglabels = d.querySelectorAll('.fg label');
+  if(fglabels[0]) fglabels[0].textContent = t('con-f-name');
+  if(fglabels[2]) fglabels[2].textContent = t('con-f-msg');
+  var fps = d.querySelectorAll('.fg input, .fg textarea');
+  if(fps[0]) fps[0].placeholder = t('con-f-name-ph');
+  if(fps[2]) fps[2].placeholder = t('con-f-msg-ph');
+  var bsend = d.querySelector('.btn-send');
+  if(bsend) bsend.textContent = t('con-btn');
+}
+
+var isAr = true;
+function toggleLang(){
+  isAr = !isAr;
+  var lang = isAr ? 'ar' : 'en';
+  var html = document.documentElement;
+  html.setAttribute('lang', lang);
+  html.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+  document.getElementById('langBtn').textContent = isAr ? 'AR | EN' : 'EN | AR';
+  var mob = document.getElementById('mobLangBtn');
+  if(mob) mob.textContent = isAr ? 'AR | EN' : 'EN | AR';
+  applyLang(lang);
+}
+</script>
+</body>
+</html>
